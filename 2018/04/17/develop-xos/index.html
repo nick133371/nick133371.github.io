@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="In this section, I will record each step that I implemented the custom service oaibbu from example service and took vHHS as an example. Synchronizer Design GuidelinesSynchronizer and data model Synchr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note for developing XOS service synchronizer">
+<meta property="og:url" content="http://yoursite.com/2018/04/17/develop-xos/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="In this section, I will record each step that I implemented the custom service oaibbu from example service and took vHHS as an example. Synchronizer Design GuidelinesSynchronizer and data model Synchr">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-17T08:59:04.081Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Note for developing XOS service synchronizer">
+<meta name="twitter:description" content="In this section, I will record each step that I implemented the custom service oaibbu from example service and took vHHS as an example. Synchronizer Design GuidelinesSynchronizer and data model Synchr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/17/develop-xos/"/>
+
+
+
+
+
+  <title>Note for developing XOS service synchronizer | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/develop-xos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Note for developing XOS service synchronizer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T16:58:16+08:00">
+                2018-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this section, I will record each step that I implemented the custom service <a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">oaibbu</a> from example service and took <a href="https://github.com/aweimeow/vHSS" target="_blank" rel="noopener">vHHS</a> as an example.</p>
+<h2 id="Synchronizer-Design-Guidelines"><a href="#Synchronizer-Design-Guidelines" class="headerlink" title="Synchronizer Design Guidelines"></a>Synchronizer Design Guidelines</h2><h3 id="Synchronizer-and-data-model"><a href="#Synchronizer-and-data-model" class="headerlink" title="Synchronizer and data model"></a>Synchronizer and data model</h3><ul>
+<li>Synchronizers act as the link between the data model and the functional half of the system.</li>
+<li>the data model contains a clean, abstract and declarative representation of the system</li>
+</ul>
+<p>Earlier releases (3.0 and before) required additional files (mostly Python code) to on-board a service, including a REST API, a TOSCA API, and an Admin GUI. These components are now auto-generated from the models rather than coded by hand.</p>
+<h3 id="CiaB-development-loop"><a href="#CiaB-development-loop" class="headerlink" title="CiaB development loop"></a>CiaB development loop</h3><ul>
+<li>Make changes to your service code and propagate them to your CiaB host</li>
+<li>Teardown the existing XOS installation and clean up OpenStack to remove any leftover instances or networks</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cd cord/build</span><br><span class="line"></span><br><span class="line"># clean environment</span><br><span class="line">make xos-teardown</span><br><span class="line">make clean-openstack </span><br><span class="line">make clean-profile</span><br><span class="line"></span><br><span class="line">#Optional: Teardown ONOS. </span><br><span class="line">#Sometimes we find it helpful to reinstall the onos-cord and onos-fabric containers,</span><br><span class="line">#to ensure that all state is wiped clean from ONOS</span><br><span class="line">make clean-onos</span><br><span class="line"></span><br><span class="line"># build</span><br><span class="line">make -j4 build </span><br><span class="line">make compute-node-refresh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(Optional) </li>
+<li>Test and verify your changes.</li>
+</ul>
+<h3 id="Create-a-XOS-service-based-on-your-service"><a href="#Create-a-XOS-service-based-on-your-service" class="headerlink" title="Create a XOS service based on your service"></a>Create a XOS service based on your service</h3><p>Synchronizers are processes that run continuously, checking for changes to the Tenant model and applying them to the running Instances. In this case, we’re using TenantWithContainer, which creates a Virtual Machine Instance for us.</p>
+<p>XOS Synchronizers are located in the xos/synchronizers directory in the XOS source tree. It’s customary to name the synchronizer directory with the same name as your service. The example code given below is in the XOS repo at xos/synchronizers/exampleservice.</p>
+<h4 id="Define-a-model-xproto"><a href="#Define-a-model-xproto" class="headerlink" title="Define a model (xproto)"></a>Define a model (xproto)</h4><ul>
+<li>Define a model</li>
+<li>XPROTO is a combination of Google Protocol Buffers and some XOS- specific annotations</li>
+<li>The XPROTO Header, which contains options that are global to the rest of the file</li>
+<li>The Service model, which manages the service as a whole</li>
+<li>The ServiceInstance model, which manages tenant-specific (per-service-instance) state</li>
+</ul>
+<p><code>name</code> specifies a name for your service<br><code>app_label</code> configures the internal xos database application that is attached to these models</p>
+<p>A Service model extends (inherits from) the XOS base <em>Service</em> model. At its head is a set of option declarations such as <code>verbose_name</code>, which specifies a human-readable name for the service model. Then follows a set of field definitions.</p>
+<p><code>oaibbu.xproto</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">option name = &quot;oaiBBU&quot;;</span><br><span class="line">option app_label = &quot;oaibbu&quot;;</span><br><span class="line"></span><br><span class="line">message OAIBBUService (Service)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Virtual Base Band Unit&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message OAIBBUVendor (XOSBase)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Vitrual Base Band Unit Vendor&quot;;</span><br><span class="line"></span><br><span class="line">    required string name = 1 [help_text = &quot;vendor name&quot;, max_length = 32, null = False, db_index = False, blank = False]; </span><br><span class="line">    required manytoone image-&gt;Image:+ = 2 [help_text = &quot;select image for this vendor&quot;, db_index = True, null = False, blank = False];</span><br><span class="line">    required manytoone flavor-&gt;Flavor:+ = 3 [help_text = &quot;select openstack flavor for vendor image&quot;, db_index = True, null = False, blank = False];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message OAIBBUTenant (TenantWithContainer)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Vitrual Base Band Unit Instance&quot;;</span><br><span class="line"></span><br><span class="line">    optional manytoone oaibbu_vendor-&gt;OAIBBUVendor:vendor_tenants = 1 [help_text = &quot;select vendor of choice, leave blank for slice default&quot;, db_index = True, null = True, blank = True]; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Define-a-syncrhronizer"><a href="#Define-a-syncrhronizer" class="headerlink" title="Define a syncrhronizer"></a>Define a syncrhronizer</h4><p>The Synchronizer has three parts: </p>
+<ul>
+<li>The synchronizer python program, </li>
+<li>model policies which enact changes on the data model</li>
+<li>a playbook (typically Ansible) that configures the underlying system. The following describes how to construct these.</li>
+</ul>
+<h4 id="model-deps"><a href="#model-deps" class="headerlink" title="model-deps"></a>model-deps</h4><p>Note: Earlier versions included a tool to track model dependencies, but today it is sufficient to create a file named <code>model-deps</code> with the contents: <code>{}</code>.</p>
+<p>=&gt; Create a file named <code>model-deps</code> with the contents: <code>{}</code>.</p>
+<h4 id="synchronizer-python-program"><a href="#synchronizer-python-program" class="headerlink" title="synchronizer python program"></a>synchronizer python program</h4><p>It loads and runs the default <code>xos-synchronizer</code> module in it’s own Docker container.<br>To configure this module, create a file named <code>exampleservice_config.yaml</code>, which specifies various configuration and logging options:</p>
+<p> <code>exampleservice-synchronizer.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Runs the standard XOS synchronizer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> xosconfig <span class="keyword">import</span> Config</span><br><span class="line"></span><br><span class="line"><span class="comment"># your custom config should be placed here</span></span><br><span class="line">config_file = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + <span class="string">'/exampleservice_config.yaml'</span>)</span><br><span class="line">Config.init(config_file, <span class="string">'synchronizer-config-schema.yaml'</span>)</span><br><span class="line"></span><br><span class="line">synchronizer_path = os.path.join(os.path.dirname(</span><br><span class="line">    os.path.realpath(__file__)), <span class="string">"../../synchronizers/new_base"</span>)</span><br><span class="line">sys.path.append(synchronizer_path)</span><br><span class="line">mod = importlib.import_module(<span class="string">"xos-synchronizer"</span>)</span><br><span class="line">mod.main()</span><br></pre></td></tr></table></figure>
+<p><code>oaibbu-synchronizer.py</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This imports and runs ../../xos-observer.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> xosconfig <span class="keyword">import</span> Config</span><br><span class="line">config_file = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + <span class="string">'/oaibbu_config.yaml'</span>)</span><br><span class="line"></span><br><span class="line">Config.init(config_file, <span class="string">'synchronizer-config-schema.yaml'</span>)</span><br><span class="line">observer_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), <span class="string">"../../synchronizers/new_base"</span>)</span><br><span class="line"></span><br><span class="line">sys.path.append(observer_path)</span><br><span class="line">mod = importlib.import_module(<span class="string">"xos-synchronizer"</span>)</span><br><span class="line">mod.main()</span><br></pre></td></tr></table></figure></p>
+<p>config yaml:</p>
+<ul>
+<li>list the path of your synchronizer component</li>
+</ul>
+<p>exampleservice_config.yaml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">name: exampleservice</span><br><span class="line">accessor:</span><br><span class="line">  username: xosadmin@opencord.org</span><br><span class="line">  password: &quot;@/opt/xos/services/exampleservice/credentials/xosadmin@opencord.org&quot;</span><br><span class="line">required_models:</span><br><span class="line">  - ExampleService</span><br><span class="line">  - ExampleServiceInstance</span><br><span class="line">  - ServiceDependency</span><br><span class="line">  - ServiceMonitoringAgentInfo</span><br><span class="line">dependency_graph: &quot;/opt/xos/synchronizers/exampleservice/model-deps&quot;</span><br><span class="line">steps_dir: &quot;/opt/xos/synchronizers/exampleservice/steps&quot;</span><br><span class="line">sys_dir: &quot;/opt/xos/synchronizers/exampleservice/sys&quot;</span><br><span class="line">model_policies_dir: &quot;/opt/xos/synchronizers/exampleservice/model_policies&quot;</span><br><span class="line">models_dir: &quot;/opt/xos/synchronizers/exampleservice/models&quot;</span><br></pre></td></tr></table></figure></p>
+<p>oaibbu_config.yaml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name: oaibbu-synchronizer</span><br><span class="line">accessor:</span><br><span class="line">  username: xosadmin@opencord.org</span><br><span class="line">  password: &quot;@/opt/xos/services/oaibbu/credentials/xosadmin@opencord.org&quot;</span><br><span class="line">dependency_graph: &quot;/opt/xos/synchronizers/oaibbu/model-deps&quot;</span><br><span class="line">steps_dir: &quot;/opt/xos/synchronizers/oaibbu/steps&quot;</span><br><span class="line">sys_dir: &quot;/opt/xos/synchronizers/oaibbu/sys&quot;</span><br><span class="line">model_policies_dir: &quot;/opt/xos/synchronizers/oaibbu/model_policies&quot;</span><br></pre></td></tr></table></figure></p>
+<p>/steps/sync_oaibbutenant.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q, F</span><br><span class="line"><span class="comment"># Bring in some basic prerequities, Q to perform complex queries, and F to get the value of the model field. Also include the models created earlier, and SyncInstanceUsingAnsible which will run the Ansible playbook in the Instance VM.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#from services.oaibbu.models import OAIBBUService, OAIBBUTenant</span></span><br><span class="line"><span class="keyword">from</span> synchronizers.new_base.modelaccessor <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> synchronizers.new_base.SyncInstanceUsingAnsible <span class="keyword">import</span> SyncInstanceUsingAnsible</span><br><span class="line"></span><br><span class="line">parentdir = os.path.join(os.path.dirname(__file__), <span class="string">".."</span>)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, parentdir)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SyncOAIBBUTenant</span><span class="params">(SyncInstanceUsingAnsible)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Used by XOSObserver : sync_steps to determine dependencies.</span></span><br><span class="line">    provides = [OAIBBUTenant]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The Tenant that is synchronized.</span></span><br><span class="line">    observes = OAIBBUTenant</span><br><span class="line"></span><br><span class="line">    requested_interval = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Name of the ansible playbook to run.</span></span><br><span class="line">    template_name = <span class="string">"oaibbutenant_playbook.yaml"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Path to the SSH key used by Ansible.</span></span><br><span class="line">    service_key_name = <span class="string">"/opt/xos/configurations/mcord/mcord_private_key"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        super(SyncOAIBBUTenant, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_network_id</span><span class="params">(self, network_name)</span>:</span></span><br><span class="line">        network = Network.objects.filter(name=network_name).first()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> network.id</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_instance_object</span><span class="params">(self, instance_id)</span>:</span></span><br><span class="line">        instance = Instance.objects.filter(id=instance_id).first()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_information</span><span class="params">(self, o)</span>:</span></span><br><span class="line">        fields = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># not sure if this part need to modify, need to check further network setting</span></span><br><span class="line"></span><br><span class="line">        collect_network = [</span><br><span class="line">           &#123;<span class="string">'name'</span>: <span class="string">'HSS_PRIVATE_IP'</span>, <span class="string">'net_name'</span>: <span class="string">'vhss_network'</span>&#125;</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line">        instance = self.get_instance_object(o.instance_id)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> collect_network:</span><br><span class="line">            network_id = self.get_network_id(data[<span class="string">'net_name'</span>])</span><br><span class="line">            port = filter(<span class="keyword">lambda</span> x: x.network_id == network_id, instance.ports.all())[<span class="number">0</span>]</span><br><span class="line">            fields[data[<span class="string">'name'</span>]] = port.ip</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fields</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_extra_attributes</span><span class="params">(self, o)</span>:</span></span><br><span class="line">        fields = self.get_information(o)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fields</span><br></pre></td></tr></table></figure>
+<h3 id="files-in-Synchronizer"><a href="#files-in-Synchronizer" class="headerlink" title="files in Synchronizer"></a>files in Synchronizer</h3><p><code>oaibbu.xproto</code></p>
+<ul>
+<li>Define a model</li>
+<li>XPROTO is a combination of Google Protocol Buffers and some XOS- specific annotations</li>
+<li>The XPROTO Header, which contains options that are global to the rest of the file</li>
+<li>The Service model, which manages the service as a whole</li>
+<li>The ServiceInstance model, which manages tenant-specific (per-service-instance) state</li>
+</ul>
+<p><code>oaibbu-synchonizer.py</code></p>
+<ul>
+<li>replace config yaml file</li>
+</ul>
+<p><code>oaibbu_config.yaml</code></p>
+<ul>
+<li>Modify synchonizer path</li>
+</ul>
+<p><code>sync_oaibbutenant.py</code></p>
+<ul>
+<li>setting of the tenant information</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/17/django/" rel="next" title="Data Model - Django">
+                <i class="fa fa-chevron-left"></i> Data Model - Django
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/17/onboard-oai/" rel="prev" title="onboarding custom service/VNF on M-CORD 4.1">
+                onboarding custom service/VNF on M-CORD 4.1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronizer-Design-Guidelines"><span class="nav-number">1.</span> <span class="nav-text">Synchronizer Design Guidelines</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronizer-and-data-model"><span class="nav-number">1.1.</span> <span class="nav-text">Synchronizer and data model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CiaB-development-loop"><span class="nav-number">1.2.</span> <span class="nav-text">CiaB development loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-XOS-service-based-on-your-service"><span class="nav-number">1.3.</span> <span class="nav-text">Create a XOS service based on your service</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-a-model-xproto"><span class="nav-number">1.3.1.</span> <span class="nav-text">Define a model (xproto)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Define-a-syncrhronizer"><span class="nav-number">1.3.2.</span> <span class="nav-text">Define a syncrhronizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#model-deps"><span class="nav-number">1.3.3.</span> <span class="nav-text">model-deps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronizer-python-program"><span class="nav-number">1.3.4.</span> <span class="nav-text">synchronizer python program</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#files-in-Synchronizer"><span class="nav-number">1.4.</span> <span class="nav-text">files in Synchronizer</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Ho</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

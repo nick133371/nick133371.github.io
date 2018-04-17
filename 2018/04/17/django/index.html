@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="Nick Ho 2018 3 nick133371@gmail.com Core ModelInstance = VM | container | container-in-VMSlice = Instances + NetworksService = Controller + slices Service Graph = Tenant Root + services + Tenants For">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nick&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/2018/04/17/Nick-s-Blog/index.html">
+<meta property="og:title" content="Data Model - Django">
+<meta property="og:url" content="http://yoursite.com/2018/04/17/django/index.html">
 <meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="Nick Ho 2018 3 nick133371@gmail.com Core ModelInstance = VM | container | container-in-VMSlice = Instances + NetworksService = Controller + slices Service Graph = Tenant Root + services + Tenants For">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-17T08:37:20.023Z">
+<meta property="og:updated_time" content="2018-04-17T08:59:46.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nick&#39;s Blog">
+<meta name="twitter:title" content="Data Model - Django">
+<meta name="twitter:description" content="Nick Ho 2018 3 nick133371@gmail.com Core ModelInstance = VM | container | container-in-VMSlice = Instances + NetworksService = Controller + slices Service Graph = Tenant Root + services + Tenants For">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/17/Nick-s-Blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/17/django/"/>
 
 
 
 
 
-  <title>Nick's Blog | Nick's Blog</title>
+  <title>Data Model - Django | Nick's Blog</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/Nick-s-Blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/django/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick Ho">
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Nick's Blog</h1>
+          <h1 class="post-title" itemprop="name headline">Data Model - Django</h1>
         
 
         <div class="post-meta">
@@ -258,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T15:10:59+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T16:56:16+08:00">
                 2018-04-17
               </time>
             
@@ -296,7 +299,38 @@
       
 
       
-        
+        <pre><code>Nick Ho 2018 3
+nick133371@gmail.com
+</code></pre><h2 id="Core-Model"><a href="#Core-Model" class="headerlink" title="Core Model"></a>Core Model</h2><p>Instance = VM | container | container-in-VM<br>Slice = Instances + Networks<br>Service = Controller + slices</p>
+<p>Service Graph = Tenant Root + services + Tenants</p>
+<p>For example :<br>subscriber -&gt; vOLT -&gt; vSG -&gt; vRouter</p>
+<h3 id="Core-Model-Details"><a href="#Core-Model-Details" class="headerlink" title="Core Model Details"></a>Core Model Details</h3><ul>
+<li>Intance<ul>
+<li>ID</li>
+<li>Name</li>
+<li>Isolation</li>
+<li>Flavor</li>
+<li>Image</li>
+<li>Node</li>
+<li>Port</li>
+</ul>
+</li>
+<li>Isolation<ul>
+<li>VM | container | container-in-VM</li>
+</ul>
+</li>
+<li>Network<ul>
+<li>template<ul>
+<li>visibility</li>
+<li>Translation</li>
+<li>etc</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Port</li>
+</ul>
+
       
     </div>
     
@@ -320,14 +354,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/17/xos-concept/" rel="next" title="XOS service on board Concept.">
+                <i class="fa fa-chevron-left"></i> XOS service on board Concept.
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/17/CORD_introduction/" rel="prev" title="CORD">
-                CORD <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/17/develop-xos/" rel="prev" title="Note for developing XOS service synchronizer">
+                Note for developing XOS service synchronizer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -380,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -423,6 +470,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Model"><span class="nav-number">1.</span> <span class="nav-text">Core Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-Model-Details"><span class="nav-number">1.1.</span> <span class="nav-text">Core Model Details</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
