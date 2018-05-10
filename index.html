@@ -468,189 +468,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/OAI-vRAN-in-M-CORD-project/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick Ho">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nick's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/10/OAI-vRAN-in-M-CORD-project/" itemprop="url">OAI vRAN in M-CORD project</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T12:00:59+08:00">
-                2018-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="OAI-vRAN-in-M-CORD-project"><a href="#OAI-vRAN-in-M-CORD-project" class="headerlink" title="OAI vRAN in M-CORD project"></a>OAI vRAN in M-CORD project</h1><pre><code>NTUST BMW LAB./ Nick
-</code></pre><h2 id="Milestone-and-target"><a href="#Milestone-and-target" class="headerlink" title="Milestone and target"></a>Milestone and target</h2><ul>
-<li><strong>[done]</strong> System Architecture for OAI virtualization</li>
-</ul>
-<hr>
-<p><img src="https://i.imgur.com/Og82xOC.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> Successfully install Cord-in-a-Box (CiaB)</p>
-<ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">Note and record for Cord in a Box porting</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>[done]</strong> OAI vEPC over CiaB <ul>
-<li>XOS service and synchonizer has been developed by <strong>NCTU</strong></li>
-<li>result for porting OAI vEPC (including VHHS VSPGW VMME)</li>
-</ul>
-</li>
-</ul>
-<p>Nova instance observation</p>
-<p><img src="https://i.imgur.com/4IOCGqy.png" alt=""></p>
-<p>Snapshot for vEPC service</p>
-<p><img src="https://i.imgur.com/2S8zDln.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> OAI vRAN over CiaB</p>
-<ul>
-<li>detail :  <ul>
-<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer for OAI BBU</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-<li><a href="/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1">Connection scenario with OAI service in M-CORD 4.1</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Service graph</p>
-<p><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
-<p>Openstack resource observation</p>
-<p><img src="https://i.imgur.com/V1cnN54.png" alt=""></p>
-<p>Nova instance observation<br><img src="https://i.imgur.com/tkAX7Rv.png" alt=""></p>
-<p>Succefully connect oaibbu to vEPC<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
-<hr>
-<ul>
-<li><strong>[ongoing]</strong> UE makes phone call over vRAN</li>
-</ul>
-<h2 id="Note-for-more-detail"><a href="#Note-for-more-detail" class="headerlink" title="Note for more detail"></a>Note for more detail</h2><ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">How to port Cord in a box in M-Cord scenario ver 4.1</a></li>
-<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
-<li><a href="/2018/04/17/django">Data Model - Django</a></li>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-<li><a href="">SDN Network in CORD</a></li>
-</ul>
-<h2 id="XOS-service-and-automation-scripts-for-deploying-OAI-BBU"><a href="#XOS-service-and-automation-scripts-for-deploying-OAI-BBU" class="headerlink" title="XOS service and automation scripts for deploying OAI BBU"></a>XOS service and automation scripts for deploying OAI BBU</h2><ul>
-<li><p><a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">XOS service of OAI BBU</a></p>
-</li>
-<li><p><a href="https://gitlab.com/NickHoB/oaibbu_script" target="_blank" rel="noopener">OAI-based M-CORD scripts</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/onboard-oai/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -793,6 +610,189 @@
 <h2 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h2><p>The lifecycle of CORD will be very short due to the openstack error.<br>If you keep the VNF running, the lifecycle will be most likely one weeks.</p>
 <p>So each time when doing the implementation, after testing shut done all the service.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># shut done</span><br><span class="line">make xos-teardown; make clean-openstack</span><br><span class="line"></span><br><span class="line"># Refresh</span><br><span class="line">make -j4 build; make compute-node-refresh</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/OAI-vRAN-in-M-CORD-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/10/OAI-vRAN-in-M-CORD-project/" itemprop="url">OAI vRAN in M-CORD project</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T12:00:59+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="OAI-vRAN-in-M-CORD-project"><a href="#OAI-vRAN-in-M-CORD-project" class="headerlink" title="OAI vRAN in M-CORD project"></a>OAI vRAN in M-CORD project</h1><pre><code>NTUST BMW LAB./ Nick
+</code></pre><h2 id="Milestone-and-target"><a href="#Milestone-and-target" class="headerlink" title="Milestone and target"></a>Milestone and target</h2><ul>
+<li><strong>[done]</strong> System Architecture for OAI virtualization</li>
+</ul>
+<hr>
+<p><img src="https://i.imgur.com/Og82xOC.png" alt=""></p>
+<hr>
+<ul>
+<li><p><strong>[done]</strong> Successfully install Cord-in-a-Box (CiaB)</p>
+<ul>
+<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">Note and record for Cord in a Box porting</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>[done]</strong> OAI vEPC over CiaB <ul>
+<li>XOS service and synchonizer has been developed by <strong>NCTU</strong></li>
+<li>result for porting OAI vEPC (including VHHS VSPGW VMME)</li>
+</ul>
+</li>
+</ul>
+<p>Nova instance observation</p>
+<p><img src="https://i.imgur.com/4IOCGqy.png" alt=""></p>
+<p>Snapshot for vEPC service</p>
+<p><img src="https://i.imgur.com/2S8zDln.png" alt=""></p>
+<hr>
+<ul>
+<li><p><strong>[done]</strong> OAI vRAN over CiaB</p>
+<ul>
+<li>detail :  <ul>
+<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
+<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer for OAI BBU</a></li>
+<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
+<li><a href="/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1">Connection scenario with OAI service in M-CORD 4.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Service graph</p>
+<p><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
+<p>Openstack resource observation</p>
+<p><img src="https://i.imgur.com/V1cnN54.png" alt=""></p>
+<p>Nova instance observation<br><img src="https://i.imgur.com/tkAX7Rv.png" alt=""></p>
+<p>Succefully connect oaibbu to vEPC<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
+<hr>
+<ul>
+<li><strong>[ongoing]</strong> UE makes phone call over vRAN</li>
+</ul>
+<h2 id="Note-for-more-detail"><a href="#Note-for-more-detail" class="headerlink" title="Note for more detail"></a>Note for more detail</h2><ul>
+<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">How to port Cord in a box in M-Cord scenario ver 4.1</a></li>
+<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
+<li><a href="/2018/04/17/django">Data Model - Django</a></li>
+<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer</a></li>
+<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
+<li><a href="">SDN Network in CORD</a></li>
+</ul>
+<h2 id="XOS-service-and-automation-scripts-for-deploying-OAI-BBU"><a href="#XOS-service-and-automation-scripts-for-deploying-OAI-BBU" class="headerlink" title="XOS service and automation scripts for deploying OAI BBU"></a>XOS service and automation scripts for deploying OAI BBU</h2><ul>
+<li><p><a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">XOS service of OAI BBU</a></p>
+</li>
+<li><p><a href="https://gitlab.com/NickHoB/oaibbu_script" target="_blank" rel="noopener">OAI-based M-CORD scripts</a></p>
+</li>
+</ul>
+
           
         
       
