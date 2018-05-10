@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OAI, CORD, M-CORD," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Modify network configuration of OAI BBU, MME, SPGW, HSSConfiguration path:   [BBU]  /openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF   [MME]  /usr/local/etc/oai/mme.conf /usr/local/etc/oai/fr">
+<meta name="keywords" content="OAI, CORD, M-CORD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Connection scenario with OAI service in M-CORD 4.1">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="Modify network configuration of OAI BBU, MME, SPGW, HSSConfiguration path:   [BBU]  /openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF   [MME]  /usr/local/etc/oai/mme.conf /usr/local/etc/oai/fr">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/s0fhu5G.png">
+<meta property="og:image" content="https://i.imgur.com/hlLLELD.png">
+<meta property="og:image" content="https://i.imgur.com/xfZR1pS.png">
+<meta property="og:image" content="https://i.imgur.com/UcHV1ZU.png">
+<meta property="og:image" content="https://i.imgur.com/ruDlpWA.png">
+<meta property="og:image" content="https://i.imgur.com/oGzvTVH.png">
+<meta property="og:image" content="https://i.imgur.com/fExLdmU.png">
+<meta property="og:updated_time" content="2018-05-10T04:14:44.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Connection scenario with OAI service in M-CORD 4.1">
+<meta name="twitter:description" content="Modify network configuration of OAI BBU, MME, SPGW, HSSConfiguration path:   [BBU]  /openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF   [MME]  /usr/local/etc/oai/mme.conf /usr/local/etc/oai/fr">
+<meta name="twitter:image" content="https://i.imgur.com/s0fhu5G.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1/"/>
+
+
+
+
+
+  <title>Connection scenario with OAI service in M-CORD 4.1 | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Connection scenario with OAI service in M-CORD 4.1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T11:30:59+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Modify-network-configuration-of-OAI-BBU-MME-SPGW-HSS"><a href="#Modify-network-configuration-of-OAI-BBU-MME-SPGW-HSS" class="headerlink" title="Modify network configuration of OAI BBU, MME, SPGW, HSS"></a>Modify network configuration of OAI BBU, MME, SPGW, HSS</h2><p>Configuration path: </p>
+<ul>
+<li>[BBU] <ul>
+<li>/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF</li>
+</ul>
+</li>
+<li>[MME] <ul>
+<li>/usr/local/etc/oai/mme.conf</li>
+<li>/usr/local/etc/oai/freeDiameters/mme_fd.conf</li>
+</ul>
+</li>
+<li>[SPGW]<ul>
+<li>/usr/local/etc/oai/spgw.conf</li>
+</ul>
+</li>
+<li>[HSS]<ul>
+<li>No need to modify</li>
+</ul>
+</li>
+</ul>
+<h2 id="BBU-configuration-Connect-to-MME-and-BBU"><a href="#BBU-configuration-Connect-to-MME-and-BBU" class="headerlink" title="BBU configuration (Connect to MME and BBU)"></a>BBU configuration (Connect to MME and BBU)</h2><p><code>/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF
+rcc.band7.tm1.50PRB.nfapi.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">    ////////// MME parameters:</span><br><span class="line">    mme_ip_address      = ( &#123; ipv4       = &quot;10.0.6.2&quot;; // MME IP</span><br><span class="line">                              ipv6       = &quot;192:168:30::17&quot;;</span><br><span class="line">                              active     = &quot;yes&quot;;</span><br><span class="line">                              preference = &quot;ipv4&quot;;</span><br><span class="line">                            &#125;</span><br><span class="line">                          );</span><br><span class="line"></span><br><span class="line">    NETWORK_INTERFACES :</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1_MME            = &quot;eth0&quot;; // your BBU config</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1_MME              = &quot;10.0.5.2&quot;; // your BBU ip</span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1U               = &quot;eth0&quot;;</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1U                 = &quot;10.0.5.2&quot;;</span><br><span class="line">        ENB_PORT_FOR_S1U                         = 2152; # Spec 2152</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">MACRLCs = (</span><br><span class="line">        &#123;</span><br><span class="line">        num_cc = 1;</span><br><span class="line">        local_s_if_name  = &quot;lo&quot;;</span><br><span class="line">        remote_s_address = &quot;127.0.0.1&quot;; // connect to RU </span><br><span class="line">        local_s_address  = &quot;127.0.0.2&quot;; // local address</span><br><span class="line">        local_s_portc    = 50001;</span><br><span class="line">        remote_s_portc   = 50000;</span><br><span class="line">        local_s_portd    = 50011;</span><br><span class="line">        remote_s_portd   = 50010;</span><br><span class="line">        tr_s_preference = &quot;nfapi&quot;;</span><br><span class="line">        tr_n_preference = &quot;local_RRC&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="MME-Configuration-Connect-to-BBU-amp-HSS-amp-SPGW"><a href="#MME-Configuration-Connect-to-BBU-amp-HSS-amp-SPGW" class="headerlink" title="MME Configuration (Connect to BBU &amp; HSS &amp; SPGW)"></a>MME Configuration (Connect to BBU &amp; HSS &amp; SPGW)</h2><p><code>/usr/local/etc/oai/mme.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"># ------- MME served GUMMEIs</span><br><span class="line"># MME code DEFAULT  size = 8 bits</span><br><span class="line"># MME GROUP ID size = 16 bits</span><br><span class="line">GUMMEI_LIST = (</span><br><span class="line">     &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;; MME_GID=&quot;4&quot; ; MME_CODE=&quot;1&quot;; &#125;   # should be same as BBU config</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># ------- MME served TAIs</span><br><span class="line"># TA (mcc.mnc:tracking area code) DEFAULT = 208.34:1</span><br><span class="line"># max values = 999.999:65535</span><br><span class="line"># maximum of 16 TAIs, comma separated</span><br><span class="line"># !!! Actually use only one PLMN</span><br><span class="line">TAI_LIST = (</span><br><span class="line">     &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;1&quot;; &#125;                                   # should be same as BBU config</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">NETWORK_INTERFACES :</span><br><span class="line">&#123;</span><br><span class="line">    # MME binded interface for S1-C or S1-MME  communication (S1AP), can be ethernet interface, virtual ethernet interface, we don&apos;t advise wireless interfaces</span><br><span class="line">    MME_INTERFACE_NAME_FOR_S1_MME         = &quot;ens3&quot;;                        # MME CONFIG HERE</span><br><span class="line">    MME_IPV4_ADDRESS_FOR_S1_MME           = &quot;10.0.6.2/24&quot;;                 # YOUR MME CONFIG HERE</span><br><span class="line"></span><br><span class="line">    # MME binded interface for S11 communication (GTPV2-C)</span><br><span class="line">    MME_INTERFACE_NAME_FOR_S11_MME        = &quot;ens3&quot;;                           # YOUR NETWORK CONFIG HERE</span><br><span class="line">    MME_IPV4_ADDRESS_FOR_S11_MME          = &quot;10.0.6.2/24&quot;;                 # YOUR MME CONFIG HERE</span><br><span class="line">    MME_PORT_FOR_S11_MME                  = 2123;                           # YOUR MME CONFIG HERE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">S-GW_LIST_SELECTION = (</span><br><span class="line"># SPGW IP here</span><br><span class="line">     &#123;ID=&quot;tac-lb01.tac-hb00.tac.epc.mnc001.mcc001.3gppnetwork.org&quot; ; SGW_IPV4_ADDRESS_FOR_S11=&quot;10.0.8.2/24&quot;;&#125; </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>/usr/local/etc/oai/freeDiameter/mme_fd.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># set HSS IP here</span><br><span class="line">ConnectPeer= &quot;hss.openair4G.eur&quot; &#123; ConnectTo = &quot;10.0.7.2&quot;; No_SCTP ; No_IPv6; Prefer_TCP; No_TLS; port = 3868;  realm = &quot;openair4G.eur&quot;;&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="SPGW-configuration-connect-to-MME"><a href="#SPGW-configuration-connect-to-MME" class="headerlink" title="SPGW configuration (connect to MME)"></a>SPGW configuration (connect to MME)</h2><p><code>/usr/local/etc/oai/spgw.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">S-GW :</span><br><span class="line">&#123;</span><br><span class="line">NETWORK_INTERFACES :</span><br><span class="line">&#123;</span><br><span class="line">    # S-GW binded interface for S11 communication (GTPV2-C), if none selected the ITTI message interface is used</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S11              = &quot;ens5&quot;;                         # STRING, interface name, YOUR NETWORK CONFIG HERE</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S11                = &quot;10.0.8.2/24&quot;;               # SPGW config</span><br><span class="line"></span><br><span class="line">    # S-GW binded interface for S1-U communication (GTPV1-U) can be ethernet interface, virtual ethernet interface, we don&apos;t advise wireless interfaces</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP    = &quot;ens5&quot;;                         # STRING, interface name, YOUR NETWORK CONFIG HERE, USE &quot;lo&quot; if S-GW run on eNB host</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S1U_S12_S4_UP      = &quot;10.0.8.2/24&quot;;              # SPGW config</span><br><span class="line">    SGW_IPV4_PORT_FOR_S1U_S12_S4_UP         = 2152;                         # INTEGER, port number, PREFER NOT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING</span><br><span class="line"></span><br><span class="line">    # S-GW binded interface for S5 or S8 communication, not implemented, so leave it to none</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S5_S8_UP         = &quot;none&quot;;                       # STRING, interface name, DO NOT CHANGE (NOT IMPLEMENTED YET)</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S5_S8_UP           = &quot;0.0.0.0/24&quot;;                 # STRING, CIDR, DO NOT CHANGE (NOT IMPLEMENTED YET)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ssh head1</span><br><span class="line"><span class="meta">head1$</span> scp ~/.ssh/id_rsa ubuntu@10.1.0.14:~/.ssh</span><br><span class="line"><span class="meta">head1$</span> ssh ubuntu@10.1.0.14</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> SSH into Service Instance, reference to nova output</span><br><span class="line">ubuntu@multicolored-jump:~$ ssh ubuntu@172.27.0.2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vHSS Service Instance</span><br><span class="line">ubuntu@vhss:~$ sudo su -</span><br><span class="line">root@vhss:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@vhss:~/openair-cn/SCRIPT$ ./run_hss</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vMME Service Instance</span><br><span class="line">ubuntu@nano:~$ sudo su -</span><br><span class="line">root@nano:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@nano:~/openair-cn/SCRIPT$ ./run_mme</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vSPGW Service Instance</span><br><span class="line">ubuntu@spgw:~$ sudo su -</span><br><span class="line">root@spgw:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@spgw:~/openair-cn/SCRIPT$ ./run_spgw</span><br></pre></td></tr></table></figure>
+<h3 id="Connectivity-check-between-BBU-amp-vEPC"><a href="#Connectivity-check-between-BBU-amp-vEPC" class="headerlink" title="Connectivity check between BBU &amp; vEPC"></a>Connectivity check between BBU &amp; vEPC</h3><p>BBU with associated MME<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
+<p>Service dependency graph<br><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
+<h2 id="Setup-a-connection-between-RRU-amp-BBU"><a href="#Setup-a-connection-between-RRU-amp-BBU" class="headerlink" title="Setup a connection between RRU &amp; BBU"></a>Setup a connection between RRU &amp; BBU</h2><p><img src="https://i.imgur.com/xfZR1pS.png" alt=""></p>
+<p>first, we should do the nested port foward to access the BBU service</p>
+<p><img src="https://i.imgur.com/UcHV1ZU.png" alt=""></p>
+<hr>
+<p>Rule should be add at all node:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> at cord server</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Forward the packet from CORD server's port 10022 to the head node's port 10022</span><br><span class="line"><span class="meta">#</span> enp4s0f0 should be your public network interface </span><br><span class="line"><span class="meta">#</span> 192.168.121.238 is the head node interface</span><br><span class="line">-A PREROUTING -i enp4s0f0 -p tcp -m tcp --dport 10022 -j DNAT --to-destination 192.168.121.238:10022</span><br><span class="line">-A FORWARD -d 192.168.121.238/32 -p tcp -m tcp --dport 10022 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> check the rules by iptables</span><br><span class="line"></span><br><span class="line">cord@cord:sudo iptables -L</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ssh to head node</span><br><span class="line">cord@cord:ssh head1</span><br><span class="line">vagrant@head1:~$sudo su </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> forward packet from head port's 10022 to compute node's port 10023</span><br><span class="line">-A PREROUTING -i eth0 -p tcp -m tcp --dport 10022 -j DNAT --to-destination 10.1.0.14:10023</span><br><span class="line">-A FORWARD -d 10.1.0.14/32 -p tcp -m tcp --dport 10023 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ssh to compute node</span><br><span class="line">vagrant@head1:~$ssh ubuntu@10.1.0.14</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> forward packet form node's port 10023 to oai service's port 22</span><br><span class="line">iptables -A PREROUTING -i mgmtbr -p tcp -m tcp --dport 10023 -j DNAT --to-destination 172.27.0.6:22</span><br><span class="line">-A POSTROUTING -p tcp --dport 22 --dst 172.27.0.6 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> to verify ssh successfully or not in each step </span><br><span class="line">sudo tcpdump -i &lt;NIC interface&gt; port &lt;PORT number&gt;</span><br></pre></td></tr></table></figure>
+<p>The way to update iptables</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> note, use iptables-save and iptables-restore would be better to addjust the rules</span><br><span class="line"></span><br><span class="line">sudo su</span><br><span class="line"></span><br><span class="line">vim iptables.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Add rules and make sure all the policy is what you want</span><br><span class="line"></span><br><span class="line">iptables-restore &lt; iptables.rules</span><br></pre></td></tr></table></figure>
+<hr>
+<p>The iptables rules that I used for this implementation</p>
+<p><a href="https://gist.github.com/nick133371/7d6c9b8d0f2e8389e07f328689340813" target="_blank" rel="noopener">CORD Server iptables template</a><br><a href="https://gist.github.com/nick133371/cbfbee6e9413cd48bdc8124b3402c0ab" target="_blank" rel="noopener">Head node iptables template</a><br><a href="https://gist.github.com/nick133371/8f10171c052f88b94b39daf7b4017e74" target="_blank" rel="noopener">Compute node iptables template</a></p>
+<p>for SCTP Forwarding</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A PREROUTING -i eth0 -p sctp -m sctp --dport 50000 -j DNAT --to-destination 10.1.0.14:50000</span><br><span class="line">-A POSTROUTING -d 10.1.0.14 -o mgmtbr -p sctp -j SNAT --to-source 192.168.121.16</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Do sudo iptables -L</p>
+<p>At CORD server : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Chain FORWARD (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination         </span><br><span class="line">ACCEPT     tcp  --  anywhere             192.168.121.16       tcp dpt:10022</span><br><span class="line">ACCEPT     sctp --  anywhere             192.168.121.16       sctp dpt:50000</span><br><span class="line">ACCEPT     udp  --  anywhere             192.168.121.16       udp dpt:50010</span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             10.100.198.0/24      ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  10.100.198.0/24      anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             192.168.121.0/24     ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  192.168.121.0/24     anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             192.168.122.0/24     ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  192.168.122.0/24     anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br></pre></td></tr></table></figure>
+<p>At head node : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Chain FORWARD (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination         </span><br><span class="line">ACCEPT     tcp  --  anywhere             10-1-0-14.cord.lab   tcp dpt:10023</span><br><span class="line">ACCEPT     sctp --  anywhere             10-1-0-14.cord.lab   sctp dpt:50001</span><br><span class="line">ACCEPT     udp  --  anywhere             portly-eye.cord.lab  udp dpt:50011</span><br><span class="line">DOCKER-USER  all  --  anywhere             anywhere            </span><br><span class="line">DOCKER-ISOLATION  all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Successfully implement the SSH tunnel </p>
+<p><img src="https://i.imgur.com/ruDlpWA.png" alt=""></p>
+<h3 id="Configure-oaibbu-with-public-network"><a href="#Configure-oaibbu-with-public-network" class="headerlink" title="Configure oaibbu with public network"></a>Configure oaibbu with public network</h3><p>Add Network definition into ==mcord-oai-services.yml.j2==</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">oaibbu_public_network:</span><br><span class="line">  type: tosca.nodes.NetworkSlice</span><br><span class="line">  requirements:</span><br><span class="line">    - network:</span><br><span class="line">        node: public</span><br><span class="line">        relationship: tosca.relationships.BelongsToOne</span><br><span class="line">    - slice:</span><br><span class="line">        node: &#123;&#123; site_name &#125;&#125;_oaibbu</span><br><span class="line">        relationship: tosca.relationships.BelongsToOne</span><br></pre></td></tr></table></figure>
+<p>After rebooting</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vagrant@head1:~$ source /opt/cord_profile/admin-openrc.sh</span><br><span class="line">vagrant@head1:~$ nova list --all-tenants</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br><span class="line">| ID                                   | Name              | Status | Task State | Power State | Networks                                                        |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br><span class="line">| 0b2aebaf-f5de-421e-8d09-bf27619d33bc | mysite_oaibbu1-5  | ACTIVE | -          | Running     | management=172.27.0.6; public=10.8.1.4; oaibbu_network=10.0.4.2 |</span><br><span class="line">| 64ece792-9e7f-4125-8fd5-9e5cb90234cd | mysite_oaispgw1-1 | ACTIVE | -          | Running     | management=172.27.0.2; public=10.8.1.2; vspgw_network=10.0.8.2  |</span><br><span class="line">| 958ad833-205e-489a-99a8-cf637e813366 | mysite_oaispgw1-4 | ACTIVE | -          | Running     | management=172.27.0.4; public=10.8.1.3; vspgw_network=10.0.8.3  |</span><br><span class="line">| 9d2f47b6-e4e3-4f77-812b-878749185b1a | mysite_vhss1-3    | ACTIVE | -          | Running     | management=172.27.0.5; vhss_network=10.0.7.2                    |</span><br><span class="line">| ed42a403-25c7-4dfd-a3c4-f188997b85ba | mysite_vmme1-2    | ACTIVE | -          | Running     | management=172.27.0.3; vmme_network=10.0.6.2                    |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<h2 id="Connection-scenario-BBU-amp-RRU"><a href="#Connection-scenario-BBU-amp-RRU" class="headerlink" title="Connection scenario BBU &amp; RRU"></a>Connection scenario BBU &amp; RRU</h2><h3 id="BBU-configuration"><a href="#BBU-configuration" class="headerlink" title="BBU configuration"></a>BBU configuration</h3><p>==rcc.band7.tm1.50PRB.nfapi.conf==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MACRLCs = (</span><br><span class="line">	&#123;</span><br><span class="line">	num_cc = 1;</span><br><span class="line">      	local_s_if_name  = &quot;eth0&quot;;			  </span><br><span class="line">      	remote_s_address = &quot;140.118.123.218&quot;; # RRU Physical machine IP</span><br><span class="line">    	local_s_address  = &quot;10.0.4.2&quot;; # Private IP in CORD</span><br><span class="line">    	local_s_portc    = 50000;	</span><br><span class="line">    	remote_s_portc   = 50001;</span><br><span class="line">    	local_s_portd    = 50010;	</span><br><span class="line">    	remote_s_portd   = 50011;</span><br><span class="line">	tr_s_preference = &quot;nfapi&quot;;</span><br><span class="line">	tr_n_preference = &quot;local_RRC&quot;;</span><br><span class="line">        &#125;  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="RRU-Configuration"><a href="#RRU-Configuration" class="headerlink" title="RRU Configuration"></a>RRU Configuration</h3><p>==oaiL1.nfapi.usrpb210.conf==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">L1s = (</span><br><span class="line">    	&#123;</span><br><span class="line">	num_cc = 1;</span><br><span class="line">	tr_n_preference = &quot;nfapi&quot;;</span><br><span class="line">      	local_n_if_name  = &quot;eth0&quot;;			  </span><br><span class="line">      	remote_n_address = &quot;140.118.122.109&quot;;</span><br><span class="line">    	local_n_address  = &quot;140.118.123.218&quot;;  # RRU Physical machine IP</span><br><span class="line">    	local_n_portc    = 50001;	</span><br><span class="line">        remote_n_portc   = 50000;</span><br><span class="line">        local_n_portd    = 50011;</span><br><span class="line">        remote_n_portd   = 50010;</span><br><span class="line">        &#125;  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Forwarding packet path (STCP &amp; UDP):<br>CORD Server=&gt; Control node =&gt; Compute node =&gt; OAI bbu public IP<br>140.118.122.109 =&gt; 192.168.121.1 =&gt; 10.1.0.14 = 10.0.4.2</p>
+<h3 id="BBU-Connect-to-RRU-in-physical-machine"><a href="#BBU-Connect-to-RRU-in-physical-machine" class="headerlink" title="BBU Connect to RRU in physical machine"></a>BBU Connect to RRU in physical machine</h3><p>branch: be8d32d5</p>
+<p><img src="https://i.imgur.com/oGzvTVH.png" alt=""></p>
+<p><img src="https://i.imgur.com/fExLdmU.png" alt=""></p>
+<h3 id="Automation-scripts"><a href="#Automation-scripts" class="headerlink" title="Automation scripts"></a>Automation scripts</h3><p>==Command for automation ip setting==<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;hostname&gt;@&lt;IP&gt; 'bash -s' &lt; test.sh</span><br></pre></td></tr></table></figure></p>
+<p>==test.sh==<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Server iptables configuration </span><br><span class="line">echo start Iptables configuration for server</span><br><span class="line"></span><br><span class="line">git clone https://gist.github.com/7d6c9b8d0f2e8389e07f328689340813.git ip</span><br><span class="line">cd ip/</span><br><span class="line"><span class="meta">#</span> adapt iptables rule</span><br><span class="line">sudo iptables-restore &lt; Iptables_cord_server.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> head1 iptables configuration</span><br><span class="line">ssh head1</span><br><span class="line">git clone https://gist.github.com/cbfbee6e9413cd48bdc8124b3402c0ab.git ip</span><br><span class="line">cd ip/</span><br><span class="line"><span class="meta">#</span> adapt iptables rule</span><br><span class="line">sudo iptables-restore &lt; Iptables_head_node.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> compute node iptables configuration</span><br><span class="line">ssh ubuntu@10.1.0.14</span><br><span class="line">git clone https://gist.github.com/8f10171c052f88b94b39daf7b4017e74.git ip</span><br><span class="line">cd ip/</span><br><span class="line">sudo iptables-restore &lt; Iptables_compute_node.rules</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OAI-CORD-M-CORD/" rel="tag"># OAI, CORD, M-CORD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/17/vRAN-project/" rel="next" title="vRAN in MCORD project">
+                <i class="fa fa-chevron-left"></i> vRAN in MCORD project
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/SDN-network-in-CORD/" rel="prev" title="SDN network in CORD">
+                SDN network in CORD <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Modify-network-configuration-of-OAI-BBU-MME-SPGW-HSS"><span class="nav-number">1.</span> <span class="nav-text">Modify network configuration of OAI BBU, MME, SPGW, HSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BBU-configuration-Connect-to-MME-and-BBU"><span class="nav-number">2.</span> <span class="nav-text">BBU configuration (Connect to MME and BBU)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MME-Configuration-Connect-to-BBU-amp-HSS-amp-SPGW"><span class="nav-number">3.</span> <span class="nav-text">MME Configuration (Connect to BBU &amp; HSS &amp; SPGW)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPGW-configuration-connect-to-MME"><span class="nav-number">4.</span> <span class="nav-text">SPGW configuration (connect to MME)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">5.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Connectivity-check-between-BBU-amp-vEPC"><span class="nav-number">5.1.</span> <span class="nav-text">Connectivity check between BBU &amp; vEPC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-a-connection-between-RRU-amp-BBU"><span class="nav-number">6.</span> <span class="nav-text">Setup a connection between RRU &amp; BBU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-oaibbu-with-public-network"><span class="nav-number">6.1.</span> <span class="nav-text">Configure oaibbu with public network</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-scenario-BBU-amp-RRU"><span class="nav-number">7.</span> <span class="nav-text">Connection scenario BBU &amp; RRU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BBU-configuration"><span class="nav-number">7.1.</span> <span class="nav-text">BBU configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RRU-Configuration"><span class="nav-number">7.2.</span> <span class="nav-text">RRU Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BBU-Connect-to-RRU-in-physical-machine"><span class="nav-number">7.3.</span> <span class="nav-text">BBU Connect to RRU in physical machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automation-scripts"><span class="nav-number">7.4.</span> <span class="nav-text">Automation scripts</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Ho</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

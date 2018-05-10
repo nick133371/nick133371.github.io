@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OAI, OpenStack, CORD, M-CORD," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="create image for openstackRequirement: A physical machine with ubuntu OS. python scripts here Description below trouble shooting: virt-install-os-variant-does-not-exist flavor defined by openstack   F">
+<meta name="keywords" content="OAI, OpenStack, CORD, M-CORD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="On board OAI BBU service over M-CORD 4.1">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/onboard-oai/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="create image for openstackRequirement: A physical machine with ubuntu OS. python scripts here Description below trouble shooting: virt-install-os-variant-does-not-exist flavor defined by openstack   F">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/sCufmNP.png">
+<meta property="og:image" content="https://i.imgur.com/yc4Kcbe.png">
+<meta property="og:image" content="https://i.imgur.com/MaXFX1m.png">
+<meta property="og:image" content="https://i.imgur.com/fUvh9Cq.png">
+<meta property="og:image" content="https://i.imgur.com/mnYzAUW.png">
+<meta property="og:updated_time" content="2018-05-10T04:09:55.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="On board OAI BBU service over M-CORD 4.1">
+<meta name="twitter:description" content="create image for openstackRequirement: A physical machine with ubuntu OS. python scripts here Description below trouble shooting: virt-install-os-variant-does-not-exist flavor defined by openstack   F">
+<meta name="twitter:image" content="https://i.imgur.com/sCufmNP.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/onboard-oai/"/>
+
+
+
+
+
+  <title>On board OAI BBU service over M-CORD 4.1 | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/onboard-oai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">On board OAI BBU service over M-CORD 4.1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T12:00:59+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="create-image-for-openstack"><a href="#create-image-for-openstack" class="headerlink" title="create image for openstack"></a>create image for openstack</h3><p>Requirement: A physical machine with ubuntu OS.</p>
+<p>python scripts <a href="https://gist.github.com/nick133371/59b3d2062d1eaf9ed1f19b8a48eae995" target="_blank" rel="noopener">here</a></p>
+<p>Description below</p>
+<p>trouble shooting:</p>
+<p><a href="https://blog.hostonnet.com/virt-install-os-variant-does-not-exist" target="_blank" rel="noopener">virt-install-os-variant-does-not-exist</a></p>
+<h3 id="flavor-defined-by-openstack"><a href="#flavor-defined-by-openstack" class="headerlink" title="flavor defined by openstack"></a>flavor defined by openstack</h3><table>
+<thead>
+<tr>
+<th>Flavor</th>
+<th>VCPUs</th>
+<th>Disk (in GB)</th>
+<th>RAM (in MB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m1.tiny</td>
+<td>1</td>
+<td>1</td>
+<td>512</td>
+</tr>
+<tr>
+<td>m1.small</td>
+<td>1</td>
+<td>20</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>m1.medium</td>
+<td>2</td>
+<td>40</td>
+<td>4096</td>
+</tr>
+<tr>
+<td>m1.large</td>
+<td>4</td>
+<td>80</td>
+<td>8192</td>
+</tr>
+<tr>
+<td>m1.xlarge</td>
+<td>8</td>
+<td>160</td>
+<td>16384</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SHA256-checksum-for-image"><a href="#SHA256-checksum-for-image" class="headerlink" title="SHA256 checksum for image"></a>SHA256 checksum for image</h3><p><img src="https://i.imgur.com/sCufmNP.png" alt=""></p>
+<p><a href="http://www.nirsoft.net/utils/hashmyfiles-x64.zip" target="_blank" rel="noopener">hashMyFiles in windows</a></p>
+<h3 id="Add-image-into-CORD-platform-yml"><a href="#Add-image-into-CORD-platform-yml" class="headerlink" title="Add image into CORD platform (yml)"></a>Add image into CORD platform (yml)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">xos_images:</span><br><span class="line">  - name: &quot;trusty-server-multi-nic&quot;</span><br><span class="line">    url: &quot;https://github.com/opencord/platform-install/releases/download/vms/trusty-server-cloudimg-amd64-disk1.img.20170201&quot;</span><br><span class="line">    checksum: &quot;sha256:ebf007ba3ec1043b7cd011fc6668e2a1d1d4c69c41071e8513ab355df7a057cb&quot;</span><br><span class="line"></span><br><span class="line">  - name: &quot;image-oai&quot;</span><br><span class="line">    url: &quot;http://aweimeow.tw/oai_new_compress.qcow2&quot;</span><br><span class="line">    checksum: &quot;sha256:f4913222bd6b07ae72d7d2086e8a9d7170f239272b15035db4a1a39cb327d7ab&quot;</span><br><span class="line"></span><br><span class="line">  - name: &quot;develop-oai-bbu&quot;</span><br><span class="line">    url: &quot;http://140.118.123.224/cord/oaibbu_compress.qcow2&quot;</span><br><span class="line">    checksum: &quot;sha256:9f7a5061f4a076d9e761329e47edc691e5451bb6436480de008afd2ec4e62de6&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Set-default-image-for-custom-service-j2"><a href="#Set-default-image-for-custom-service-j2" class="headerlink" title="Set default image for custom service (j2)"></a>Set default image for custom service (j2)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># Service Slice</span><br><span class="line"></span><br><span class="line"># OAI BBU Service slice, Use develop-oai-bbu as default iamge</span><br><span class="line">    &#123;&#123; site_name &#125;&#125;_vbbu:</span><br><span class="line">      description: vBBU Service Slice</span><br><span class="line">      type: tosca.nodes.Slice</span><br><span class="line">      properties:</span><br><span class="line">          name: &#123;&#123; site_name &#125;&#125;_vbbu1</span><br><span class="line">          default_isolation: vm</span><br><span class="line">          network: noauto</span><br><span class="line">      requirements:</span><br><span class="line">          - site:</span><br><span class="line">              node: &#123;&#123; site_name &#125;&#125;</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - service:</span><br><span class="line">              node: service#oaibbu</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - default_image:</span><br><span class="line">              node: develop-oai-bbu</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - default_flavor:</span><br><span class="line">              node: m1.large</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br></pre></td></tr></table></figure>
+<h3 id="Create-OAI-BBU-instance-from-CORD-GUI"><a href="#Create-OAI-BBU-instance-from-CORD-GUI" class="headerlink" title="Create OAI BBU instance from CORD GUI"></a>Create OAI BBU instance from CORD GUI</h3><ul>
+<li>Click Oaibbuservice</li>
+<li>OAI BBU service instances</li>
+<li>Add</li>
+<li>Choose owner id OAIBBU_Service</li>
+<li>Save</li>
+<li>After few minutes, you can check at instances page</li>
+</ul>
+<p><img src="https://i.imgur.com/yc4Kcbe.png" alt=""></p>
+<p><img src="https://i.imgur.com/MaXFX1m.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vagrant@head1:~$ source /opt/cord_profile/admin-openrc.sh</span><br><span class="line">vagrant@head1:~$ nova list --all-tenants</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| ID                                   | Name              | Status | Task State | Power State | Networks                                                       |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| be2f6587-35f8-468b-b648-aa19609969bd | mysite_oaispgw1-1 | ACTIVE | -          | Running     | management=172.27.0.4; public=10.8.1.2; vspgw_network=10.0.8.2 |</span><br><span class="line">| a22fdde3-fade-4ce6-87a6-fad844fc1202 | mysite_oaispgw1-4 | ACTIVE | -          | Running     | management=172.27.0.5; public=10.8.1.3; vspgw_network=10.0.8.3 |</span><br><span class="line">| c4e93cb5-c91c-4807-87e8-7212139c772b | mysite_vbbu1-5    | ACTIVE | -          | Running     | management=172.27.0.6; vbbu_network=10.0.5.2                   |</span><br><span class="line">| 92ede522-defe-47e4-9220-fd0793816957 | mysite_vhss1-3    | ACTIVE | -          | Running     | management=172.27.0.2; vhss_network=10.0.7.2                   |</span><br><span class="line">| 81ddd5f8-5090-4aab-8170-5e02bcdc8081 | mysite_vmme1-2    | ACTIVE | -          | Running     | management=172.27.0.3; vmme_network=10.0.6.2                   |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<h2 id="Command-for-using-OAI-BBU"><a href="#Command-for-using-OAI-BBU" class="headerlink" title="Command for using OAI BBU"></a>Command for using OAI BBU</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ssh head1</span><br><span class="line">scp ~/.ssh/id_rsa ubuntu@10.1.0.14:~/.ssh</span><br><span class="line">ssh ubuntu@10.1.0.14</span><br><span class="line">ssh oai@&lt;management IP&gt;</span><br><span class="line"></span><br><span class="line">sudo su</span><br><span class="line">cd openairinterface/cmake_targets/lte_build_oai/build/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> for execute develop branch at RCC side</span><br><span class="line">sudo ./lte-softmodem -E -O ../../../targets/PROJECTS/GENERIC-LTE-EPC/CONF/rcc.band7.tm1.50PRB.nfapi.conf</span><br></pre></td></tr></table></figure>
+<p>already have the vbbu service, but still need to check connectivity with vMME &amp; vHSS</p>
+<p><img src="https://i.imgur.com/fUvh9Cq.png" alt=""></p>
+<h2 id="Check-connectivity-to-each-service"><a href="#Check-connectivity-to-each-service" class="headerlink" title="Check connectivity to each service"></a>Check connectivity to each service</h2><p>Use tmux to manage multiple slices of VNF service</p>
+<p><img src="https://i.imgur.com/mnYzAUW.png" alt=""></p>
+<h2 id="Command-for-re-deploy-service"><a href="#Command-for-re-deploy-service" class="headerlink" title="Command for re-deploy service"></a>Command for re-deploy service</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> clean service / profile</span><br><span class="line">cord@cord:~/cord/build$ make xos-teardown; make clean-openstack; make clean-profile;</span><br><span class="line">cord@cord:~/cord/build$ cd genconfig/ &amp;&amp; rm -rf config.* cord_* inventory.ini;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> update configuration</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> re-build</span><br><span class="line">cord@cord:~/cord/build$ make PODCONFIG=mcord-oai-virtual.yml config</span><br><span class="line">cord@cord:~/cord/build$ make -j4 build; make compute-node-refresh</span><br></pre></td></tr></table></figure>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h2><p>The lifecycle of CORD will be very short due to the openstack error.<br>If you keep the VNF running, the lifecycle will be most likely one weeks.</p>
+<p>So each time when doing the implementation, after testing shut done all the service.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># shut done</span><br><span class="line">make xos-teardown; make clean-openstack</span><br><span class="line"></span><br><span class="line"># Refresh</span><br><span class="line">make -j4 build; make compute-node-refresh</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OAI-OpenStack-CORD-M-CORD/" rel="tag"># OAI, OpenStack, CORD, M-CORD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/10/OAI-vRAN-in-M-CORD-project/" rel="next" title="OAI vRAN in M-CORD project">
+                <i class="fa fa-chevron-left"></i> OAI vRAN in M-CORD project
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/Ansible-Note/" rel="prev" title="Ansible Note">
+                Ansible Note <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-image-for-openstack"><span class="nav-number">1.</span> <span class="nav-text">create image for openstack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flavor-defined-by-openstack"><span class="nav-number">2.</span> <span class="nav-text">flavor defined by openstack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA256-checksum-for-image"><span class="nav-number">3.</span> <span class="nav-text">SHA256 checksum for image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-image-into-CORD-platform-yml"><span class="nav-number">4.</span> <span class="nav-text">Add image into CORD platform (yml)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-default-image-for-custom-service-j2"><span class="nav-number">5.</span> <span class="nav-text">Set default image for custom service (j2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-OAI-BBU-instance-from-CORD-GUI"><span class="nav-number">6.</span> <span class="nav-text">Create OAI BBU instance from CORD GUI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-for-using-OAI-BBU"><span class="nav-number"></span> <span class="nav-text">Command for using OAI BBU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-connectivity-to-each-service"><span class="nav-number"></span> <span class="nav-text">Check connectivity to each service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-for-re-deploy-service"><span class="nav-number"></span> <span class="nav-text">Command for re-deploy service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number"></span> <span class="nav-text">Note:</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Ho</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

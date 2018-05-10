@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CORD, SDN," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Concept of SDN : disaggregate control plane and data plane.  control plane : to show how the packet route  Pre-knowledge for SDN networkUnderlay &amp;amp; Overlay in Data center networkIn recent years, de">
+<meta name="keywords" content="CORD, SDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SDN network in CORD">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/SDN-network-in-CORD/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="Concept of SDN : disaggregate control plane and data plane.  control plane : to show how the packet route  Pre-knowledge for SDN networkUnderlay &amp;amp; Overlay in Data center networkIn recent years, de">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/uRTfNq8.png">
+<meta property="og:image" content="https://i.imgur.com/BpQXIGx.png">
+<meta property="og:image" content="https://i.imgur.com/MPjr40E.png">
+<meta property="og:image" content="https://i.imgur.com/nU1T2Jn.png">
+<meta property="og:image" content="https://i.imgur.com/IRXFd0i.png">
+<meta property="og:image" content="https://i.imgur.com/KwhvPw6.png">
+<meta property="og:image" content="https://i.imgur.com/WzTXXd0.png">
+<meta property="og:image" content="https://i.imgur.com/huQdacL.png">
+<meta property="og:image" content="https://i.imgur.com/RDbMtBV.png">
+<meta property="og:image" content="https://i.imgur.com/L6ufLXl.png">
+<meta property="og:updated_time" content="2018-05-10T04:15:48.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SDN network in CORD">
+<meta name="twitter:description" content="Concept of SDN : disaggregate control plane and data plane.  control plane : to show how the packet route  Pre-knowledge for SDN networkUnderlay &amp;amp; Overlay in Data center networkIn recent years, de">
+<meta name="twitter:image" content="https://i.imgur.com/uRTfNq8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/SDN-network-in-CORD/"/>
+
+
+
+
+
+  <title>SDN network in CORD | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/SDN-network-in-CORD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SDN network in CORD</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T11:40:59+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Concept of SDN : disaggregate control plane and data plane.</p>
+<ul>
+<li>control plane : to show how the packet route</li>
+</ul>
+<h2 id="Pre-knowledge-for-SDN-network"><a href="#Pre-knowledge-for-SDN-network" class="headerlink" title="Pre-knowledge for SDN network"></a>Pre-knowledge for SDN network</h2><h3 id="Underlay-amp-Overlay-in-Data-center-network"><a href="#Underlay-amp-Overlay-in-Data-center-network" class="headerlink" title="Underlay &amp; Overlay in Data center network"></a>Underlay &amp; Overlay in Data center network</h3><p>In recent years, deploying a big amounts of VMs becomes necessary since the universality of technologys (e.g. cloud-comuting, big data etc).<br>The migration/mobility/scale of the VMs will be strongly restricted by the traditional network infrastructure.<br>To deal with this problem, it better to add an Overlay (logical network) on the Underlay(traditional network) basic.</p>
+<p>Under Underlay network, all the packet flow will be determined by controller, controller will use OpenFlow or BPG protocal to controll overlay (透過轉發器)<br>Under Overlay network, it usually traddional equiptment which didn’t support OpenFlow. So it will use tunnelling technology to go through that kind of equipment</p>
+<p>Underlay:</p>
+<ul>
+<li>Original internet equiptment.</li>
+<li>底層網路，負責互聯互通</li>
+</ul>
+<p>Overlay:</p>
+<ul>
+<li>網路架構疊加虛擬化</li>
+<li>在不進行大規模修改的條件下，實現應用在網路上的乘載，並能與其他業務分離。</li>
+<li>建立在已有網路上的虛擬往，用邏輯節點跟邏輯線路構成了Overlay網路。</li>
+<li>獨立的control plane和轉發平面</li>
+<li>TRILL, NVGRE, STT, VXLAN</li>
+<li>佈署不受限制並且自動，對傳統網路修改小，重要的是VM與時體積都可以接入Overlay網路</li>
+</ul>
+<p>Overlay網路和Underlay網路是獨立的</p>
+<h2 id="SDN-Architecture"><a href="#SDN-Architecture" class="headerlink" title="SDN Architecture"></a>SDN Architecture</h2><p><img src="https://i.imgur.com/uRTfNq8.png" alt=""></p>
+<ul>
+<li>API = REST API</li>
+</ul>
+<h2 id="SDN-Switch"><a href="#SDN-Switch" class="headerlink" title="SDN Switch"></a>SDN Switch</h2><p><img src="https://i.imgur.com/BpQXIGx.png" alt=""></p>
+<ul>
+<li>box = 白牌盒子</li>
+<li>openstack 建置可能考慮Cumulus Linux, big switch</li>
+</ul>
+<h2 id="SDN-controller"><a href="#SDN-controller" class="headerlink" title="SDN controller"></a>SDN controller</h2><p><img src="https://i.imgur.com/MPjr40E.png" alt=""></p>
+<ul>
+<li>open daylight 是設備商主導推出的軟體，為了讓他們的設備賣得更好 </li>
+<li>ONOS 組成主要是電信商，比較偏應用導向。</li>
+<li>Liu  日本NTT主導的controller，最好上手，架構也很簡單。</li>
+</ul>
+<h2 id="ONOS-controller"><a href="#ONOS-controller" class="headerlink" title="ONOS controller"></a>ONOS controller</h2><p>提供Carrier-Grade等級能力</p>
+<ul>
+<li>High Availability (Cluster)</li>
+<li>High Performance (Can deal with tens milloins of End point)</li>
+<li>Low Latency</li>
+<li>Easy to Scale out</li>
+</ul>
+<p>Architecture</p>
+<p><img src="https://i.imgur.com/nU1T2Jn.png" alt=""></p>
+<ul>
+<li>每個Instance都是一個VM，我們把這些VM綁在一起形成一個cluster</li>
+<li>Cluster會碰到的問題：資料怎麼保持一致性，並且保證狀態都一致</li>
+<li>在Distributed Core可以解決這個問題</li>
+<li>南向API會支持一些protocol(Openflow, SAMP etc)，設備跟controller溝通的介面</li>
+<li>北向API則是邏輯判斷封包該怎麼流動</li>
+<li>建議建立奇數個Instance</li>
+</ul>
+<h2 id="Network-infrastrcuture-for-CORD"><a href="#Network-infrastrcuture-for-CORD" class="headerlink" title="Network infrastrcuture for CORD"></a>Network infrastrcuture for CORD</h2><p>Trellis</p>
+<p><img src="https://i.imgur.com/IRXFd0i.png" alt=""></p>
+<p>Trellis in CORD architecture</p>
+<p><img src="https://i.imgur.com/KwhvPw6.png" alt=""></p>
+<p>In the current implementation, there are actually two sets of ONOS controllers with different responsibilities. </p>
+<p>The first ONOS cluster (onos-cord) is responsible for the overlay infrastructure (virtual networking and service composition) and the access infrastructure. This cluster hosts the VTN and vOLT applications, respectively.</p>
+<p>The second ONOS cluster (onos-fabric) is responsible for controlling the fabric and interfacing with conventional upstream routers. This cluster hosts the Fabric Control and vRouter applications, respectively.</p>
+<p>Multicast control is via two additional applications, IGMP snooping and PIM-SSM, where the former runs on onos-cord and the latter runs on onos-fabric. </p>
+<h3 id="Trellis-Underlay-Fabric"><a href="#Trellis-Underlay-Fabric" class="headerlink" title="Trellis Underlay Fabric"></a>Trellis Underlay Fabric</h3><ul>
+<li>The underlay hardware fabric is controlled by an application (called ‘segmentrouting’) in ONOS. It interacts with a number of other applications like vRouter, vOLT and multicast applications to provide CORD services</li>
+<li>CORD network architecture:<ul>
+<li>SDN based Leaf-Spine fabric built with bare-metal (OCP certified) hardware and open-source switch software.</li>
+<li>The fabric has the following characteristics:<ul>
+<li>L2 switching within a rack handled at leaf-switches (ToRs).</li>
+<li>L3 forwarding across racks using ECMP hashing and MPLS segment routing.</li>
+<li>vRouter integration for interfacing with upstream metro-router, providing reachability to publicly routable IP addresses.</li>
+<li>VLAN cross-connect feature to switch QinQ packets between OLT I/O blades and vSG containers (R-CORD feature).</li>
+<li>IPv4 multicast forwarding and pruning for IPTV streams (with vRouter integration) from upstream router to residential subscribers (R-CORD feature).</li>
+<li>XOS integration via REST API calls to dynamically configure end-hosts and VLAN cross-connects at runtime.</li>
+<li>Ability to use the fabric in single-rack or multi-rack configurations.</li>
+</ul>
+</li>
+<li>the fabric forms the underlay network in an overlay/underlay architecture. The overlay (sometimes referred to as the outer fabric) is also SDN based.<ul>
+<li>Use of software-switches (eg. OvS with DPDK) with a custom-designed pipeline for service-chaining.</li>
+<li>Distributed load-balancing per service in each OvS.</li>
+<li>VxLAN tunneling in OvS for overlay-based virtual networks.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The biggest advantage of common SDN control over both the overlay infrastructure as well as the underlay fabric is that they can be orchestrated together and optimized to deliver the features and services that Central Offices require, with the agility and economies of datacenter operations.</p>
+<p>Fabric Operation as an Underlay</p>
+<p><img src="https://i.imgur.com/WzTXXd0.png" alt=""></p>
+<p><img src="https://i.imgur.com/huQdacL.png" alt=""></p>
+<h3 id="Virtual-Tenant-Networks-amp-Service-Composition"><a href="#Virtual-Tenant-Networks-amp-Service-Composition" class="headerlink" title="Virtual Tenant Networks &amp; Service Composition"></a>Virtual Tenant Networks &amp; Service Composition</h3><p>CORD service Composition</p>
+<p><img src="https://i.imgur.com/RDbMtBV.png" alt=""></p>
+<h3 id="Connect-to-ONOS-CLI-in-CORD"><a href="#Connect-to-ONOS-CLI-in-CORD" class="headerlink" title="Connect to ONOS CLI in CORD"></a>Connect to ONOS CLI in CORD</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ssh head1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> connect to the onos service CLI</span><br><span class="line">ssh -p 8102 onos@onos-cord</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> default password: rocks</span><br></pre></td></tr></table></figure>
+<h2 id="ONOS-SDN-IP-Appendix"><a href="#ONOS-SDN-IP-Appendix" class="headerlink" title="ONOS SDN-IP (Appendix)"></a>ONOS SDN-IP (Appendix)</h2><p><img src="https://i.imgur.com/L6ufLXl.png" alt=""></p>
+<ul>
+<li>基於SDN環境建立BGP Speaker跟外界交換BGP information (BGP: AS 跟 AS 間做的messeage exchange)</li>
+<li>採用Quagga來當BGP Speaker <ul>
+<li>Quagga並非直接跟switch連接</li>
+<li>連接過程透過SDN-IP，會去偵測BGP的一些特徵，例如固定使用的Port，並forward到Quagga</li>
+<li>有兩個BGP speaker，分別做內部的BGP交換(iBGP)</li>
+</ul>
+</li>
+<li>採用 Openflow-enable Switch 來建立連線溝通</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CORD-SDN/" rel="tag"># CORD, SDN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1/" rel="next" title="Connection scenario with OAI service in M-CORD 4.1">
+                <i class="fa fa-chevron-left"></i> Connection scenario with OAI service in M-CORD 4.1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/OAI-vRAN-in-M-CORD-project/" rel="prev" title="OAI vRAN in M-CORD project">
+                OAI vRAN in M-CORD project <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-knowledge-for-SDN-network"><span class="nav-number">1.</span> <span class="nav-text">Pre-knowledge for SDN network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Underlay-amp-Overlay-in-Data-center-network"><span class="nav-number">1.1.</span> <span class="nav-text">Underlay &amp; Overlay in Data center network</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDN-Architecture"><span class="nav-number">2.</span> <span class="nav-text">SDN Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDN-Switch"><span class="nav-number">3.</span> <span class="nav-text">SDN Switch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDN-controller"><span class="nav-number">4.</span> <span class="nav-text">SDN controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ONOS-controller"><span class="nav-number">5.</span> <span class="nav-text">ONOS controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-infrastrcuture-for-CORD"><span class="nav-number">6.</span> <span class="nav-text">Network infrastrcuture for CORD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trellis-Underlay-Fabric"><span class="nav-number">6.1.</span> <span class="nav-text">Trellis Underlay Fabric</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-Tenant-Networks-amp-Service-Composition"><span class="nav-number">6.2.</span> <span class="nav-text">Virtual Tenant Networks &amp; Service Composition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-to-ONOS-CLI-in-CORD"><span class="nav-number">6.3.</span> <span class="nav-text">Connect to ONOS CLI in CORD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ONOS-SDN-IP-Appendix"><span class="nav-number">7.</span> <span class="nav-text">ONOS SDN-IP (Appendix)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Ho</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
