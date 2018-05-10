@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Background==IaC - Infrastructure as Code==Definition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle sof">
+<meta name="description" content="BackgroundIaC - Infrastructure as CodeDefinition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle softwar">
 <meta name="keywords" content="Ansible">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ansible Note">
 <meta property="og:url" content="http://yoursite.com/2018/05/10/Ansible-Note/index.html">
 <meta property="og:site_name" content="Nick&#39;s Blog">
-<meta property="og:description" content="Background==IaC - Infrastructure as Code==Definition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle sof">
+<meta property="og:description" content="BackgroundIaC - Infrastructure as CodeDefinition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle softwar">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-10T04:14:18.777Z">
+<meta property="og:updated_time" content="2018-05-10T04:18:08.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Note">
-<meta name="twitter:description" content="Background==IaC - Infrastructure as Code==Definition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle sof">
+<meta name="twitter:description" content="BackgroundIaC - Infrastructure as CodeDefinition:  Use the “code” which can be executed by software to present the IT system infrastructure state. The system infrastructure will contain middle softwar">
 
 
 
@@ -310,7 +310,7 @@
       
 
       
-        <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="IaC-Infrastructure-as-Code"><a href="#IaC-Infrastructure-as-Code" class="headerlink" title="==IaC - Infrastructure as Code=="></a>==IaC - Infrastructure as Code==</h3><p>Definition:</p>
+        <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="IaC-Infrastructure-as-Code"><a href="#IaC-Infrastructure-as-Code" class="headerlink" title="IaC - Infrastructure as Code"></a>IaC - Infrastructure as Code</h3><p>Definition:</p>
 <ul>
 <li>Use the “code” which can be executed by software to present the IT system infrastructure state.</li>
 <li>The system infrastructure will contain middle software deployment, external service, and the cooperation with provision. (Not only Machine and Network)</li>
@@ -321,7 +321,7 @@
 <li>Use programization to reach the high quality</li>
 <li>Easily to deploy large scale.</li>
 </ul>
-<h3 id="DevOps"><a href="#DevOps" class="headerlink" title="==DevOps=="></a>==DevOps==</h3><p>Definition:</p>
+<h3 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h3><p>Definition:</p>
 <ul>
 <li>Use the close cooperation between Dev (Development) and Ops (Oprations) to shorten the software life cycle.</li>
 <li>For IaC, we can briefly summarize that it is use code to define a state or operation.</li>
@@ -343,7 +343,7 @@
 </ul>
 <p>For sure, IaC can make all the design procedure automatical.</p>
 <p>Note : shell script is also an example of IaC, but only for some low effort work. Chef, Puppet, and Ansible are also example.</p>
-<h3 id="Ansible"><a href="#Ansible" class="headerlink" title="==Ansible=="></a>==Ansible==</h3><ul>
+<h3 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h3><ul>
 <li>Created by Red Hat, </li>
 <li>Use Python to state and promote automation for everyone.</li>
 <li>Component:<ul>
@@ -366,7 +366,14 @@
 </ul>
 </li>
 <li>Different from normal command, Ansible will check the statement at this timing, and do only the part we have changed. It will be very complex if you use shell.</li>
-<li><figure class="highlight plain"><figcaption><span>-l``` to check the module that Ansible </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    - Playbook []</span><br><span class="line">        - A rundown code to Ansible.</span><br><span class="line">        - Different from other automation tool, the statement description of the playbook is not a programming language.</span><br><span class="line">        - Use Yaml to state, which just a modification from JSON.</span><br><span class="line">        - Yaml is easy to read from both people and machines.</span><br><span class="line"></span><br><span class="line">```sequence</span><br><span class="line">艾莉絲-&gt;包柏: 哈摟，你好嗎？</span><br><span class="line">Note right of 包柏: 包柏思考中</span><br><span class="line">包柏-&gt;操你妹: 嗨</span><br><span class="line">操你妹-&gt;艾莉絲: 哦</span><br><span class="line">包柏--&gt;艾莉絲: 我很好，謝謝！</span><br><span class="line">Note left of 艾莉絲: 艾莉絲回應</span><br><span class="line">艾莉絲-&gt;包柏: 最近過得怎樣？</span><br></pre></td></tr></table></figure></li>
+<li><code>ansible-doc -l</code> to check the module that Ansible </li>
+</ul>
+</li>
+<li>Playbook []<ul>
+<li>A rundown code to Ansible.</li>
+<li>Different from other automation tool, the statement description of the playbook is not a programming language.</li>
+<li>Use Yaml to state, which just a modification from JSON.</li>
+<li>Yaml is easy to read from both people and machines.</li>
 </ul>
 </li>
 </ul>
@@ -402,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/onboard-oai/" rel="next" title="On board OAI BBU service over M-CORD 4.1">
-                <i class="fa fa-chevron-left"></i> On board OAI BBU service over M-CORD 4.1
+              <a href="/2018/05/10/OAI-vRAN-in-M-CORD-project/" rel="next" title="OAI vRAN in M-CORD project">
+                <i class="fa fa-chevron-left"></i> OAI vRAN in M-CORD project
               </a>
             
           </div>
@@ -533,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IaC-Infrastructure-as-Code"><span class="nav-number">1.1.</span> <span class="nav-text">==IaC - Infrastructure as Code==</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevOps"><span class="nav-number">1.2.</span> <span class="nav-text">==DevOps==</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ansible"><span class="nav-number">1.3.</span> <span class="nav-text">==Ansible==</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IaC-Infrastructure-as-Code"><span class="nav-number">1.1.</span> <span class="nav-text">IaC - Infrastructure as Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevOps"><span class="nav-number">1.2.</span> <span class="nav-text">DevOps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ansible"><span class="nav-number">1.3.</span> <span class="nav-text">Ansible</span></a></li></ol></li></ol></div>
             
 
           </div>
