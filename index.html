@@ -198,52 +198,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
-            
-            Schedule
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            Sitemap
           </a>
         </li>
       
@@ -351,266 +311,18 @@
       
         
           
-            <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="IaC-Infrastructure-as-Code"><a href="#IaC-Infrastructure-as-Code" class="headerlink" title="IaC - Infrastructure as Code"></a>IaC - Infrastructure as Code</h3><p>Definition:</p>
-<ul>
-<li>Use the “code” which can be executed by software to present the IT system infrastructure state.</li>
-<li>The system infrastructure will contain middle software deployment, external service, and the cooperation with provision. (Not only Machine and Network)</li>
-</ul>
-<p>Benefit:</p>
-<ul>
-<li>Reduce man power to lower the cost.</li>
-<li>Use programization to reach the high quality</li>
-<li>Easily to deploy large scale.</li>
-</ul>
-<h3 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h3><p>Definition:</p>
-<ul>
-<li>Use the close cooperation between Dev (Development) and Ops (Oprations) to shorten the software life cycle.</li>
-<li>For IaC, we can briefly summarize that it is use code to define a state or operation.</li>
-<li>Design rule:<ul>
-<li>Use sub-version tool (Git) to do the version control</li>
-<li>Automation tool test<ul>
-<li>static test with code analysis</li>
-<li>Asible to test enviroment</li>
-<li>Serverspec to test the machine state</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Use tool to do CI (Continous Integration)<ul>
-<li>Use Jenkin to deploy, and then automatically start Ansible to react to real environment</li>
-<li>Co-work with git to synchonize code and deployment immediately.</li>
-</ul>
-</li>
-</ul>
-<p>For sure, IaC can make all the design procedure automatical.</p>
-<p>Note : shell script is also an example of IaC, but only for some low effort work. Chef, Puppet, and Ansible are also example.</p>
-<h3 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h3><ul>
-<li>Created by Red Hat, </li>
-<li>Use Python to state and promote automation for everyone.</li>
-<li>Component:<ul>
-<li>Ansible <ul>
-<li>when launching a moddule or playbook, use CLI to execute Ansible. After that, we can use all the command after installation by Ansible.</li>
-</ul>
-</li>
-<li>Inventory [Where do you want to deploy with Ansible]<ul>
-<li>the machine list you want to deploy</li>
-<li>group the machine you want to deploy, and can set different parameters for each group</li>
-</ul>
-</li>
-<li>Module [What do you want to do with Ansible]<ul>
-<li>The function that use Ansible to execute.<ul>
-<li>OS operation (package installation, update etc)</li>
-<li>file operation (File copy and paste)</li>
-<li>DB operation (MYSQL, Postgresql etc)</li>
-<li>Cloud service operation (AWS, OpenStack etc)</li>
-<li>online machine operation</li>
-</ul>
-</li>
-<li>Different from normal command, Ansible will check the statement at this timing, and do only the part we have changed. It will be very complex if you use shell.</li>
-<li><code>ansible-doc -l</code> to check the module that Ansible </li>
-</ul>
-</li>
-<li>Playbook []<ul>
-<li>A rundown code to Ansible.</li>
-<li>Different from other automation tool, the statement description of the playbook is not a programming language.</li>
-<li>Use Yaml to state, which just a modification from JSON.</li>
-<li>Yaml is easy to read from both people and machines.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          BackgroundIaC - Infrastructure as CodeDefinition:
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/onboard-oai/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick Ho">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nick's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/10/onboard-oai/" itemprop="url">On board OAI BBU service over M-CORD 4.1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T12:00:59+08:00">
-                2018-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="create-image-for-openstack"><a href="#create-image-for-openstack" class="headerlink" title="create image for openstack"></a>create image for openstack</h3><p>Requirement: A physical machine with ubuntu OS.</p>
-<p>python scripts <a href="https://gist.github.com/nick133371/59b3d2062d1eaf9ed1f19b8a48eae995" target="_blank" rel="noopener">here</a></p>
-<p>Description below</p>
-<p>trouble shooting:</p>
-<p><a href="https://blog.hostonnet.com/virt-install-os-variant-does-not-exist" target="_blank" rel="noopener">virt-install-os-variant-does-not-exist</a></p>
-<h3 id="flavor-defined-by-openstack"><a href="#flavor-defined-by-openstack" class="headerlink" title="flavor defined by openstack"></a>flavor defined by openstack</h3><table>
-<thead>
-<tr>
-<th>Flavor</th>
-<th>VCPUs</th>
-<th>Disk (in GB)</th>
-<th>RAM (in MB)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>m1.tiny</td>
-<td>1</td>
-<td>1</td>
-<td>512</td>
-</tr>
-<tr>
-<td>m1.small</td>
-<td>1</td>
-<td>20</td>
-<td>2048</td>
-</tr>
-<tr>
-<td>m1.medium</td>
-<td>2</td>
-<td>40</td>
-<td>4096</td>
-</tr>
-<tr>
-<td>m1.large</td>
-<td>4</td>
-<td>80</td>
-<td>8192</td>
-</tr>
-<tr>
-<td>m1.xlarge</td>
-<td>8</td>
-<td>160</td>
-<td>16384</td>
-</tr>
-</tbody>
-</table>
-<h3 id="SHA256-checksum-for-image"><a href="#SHA256-checksum-for-image" class="headerlink" title="SHA256 checksum for image"></a>SHA256 checksum for image</h3><p><img src="https://i.imgur.com/sCufmNP.png" alt=""></p>
-<p><a href="http://www.nirsoft.net/utils/hashmyfiles-x64.zip" target="_blank" rel="noopener">hashMyFiles in windows</a></p>
-<h3 id="Add-image-into-CORD-platform-yml"><a href="#Add-image-into-CORD-platform-yml" class="headerlink" title="Add image into CORD platform (yml)"></a>Add image into CORD platform (yml)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">xos_images:</span><br><span class="line">  - name: &quot;trusty-server-multi-nic&quot;</span><br><span class="line">    url: &quot;https://github.com/opencord/platform-install/releases/download/vms/trusty-server-cloudimg-amd64-disk1.img.20170201&quot;</span><br><span class="line">    checksum: &quot;sha256:ebf007ba3ec1043b7cd011fc6668e2a1d1d4c69c41071e8513ab355df7a057cb&quot;</span><br><span class="line"></span><br><span class="line">  - name: &quot;image-oai&quot;</span><br><span class="line">    url: &quot;http://aweimeow.tw/oai_new_compress.qcow2&quot;</span><br><span class="line">    checksum: &quot;sha256:f4913222bd6b07ae72d7d2086e8a9d7170f239272b15035db4a1a39cb327d7ab&quot;</span><br><span class="line"></span><br><span class="line">  - name: &quot;develop-oai-bbu&quot;</span><br><span class="line">    url: &quot;http://140.118.123.224/cord/oaibbu_compress.qcow2&quot;</span><br><span class="line">    checksum: &quot;sha256:9f7a5061f4a076d9e761329e47edc691e5451bb6436480de008afd2ec4e62de6&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="Set-default-image-for-custom-service-j2"><a href="#Set-default-image-for-custom-service-j2" class="headerlink" title="Set default image for custom service (j2)"></a>Set default image for custom service (j2)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># Service Slice</span><br><span class="line"></span><br><span class="line"># OAI BBU Service slice, Use develop-oai-bbu as default iamge</span><br><span class="line">    &#123;&#123; site_name &#125;&#125;_vbbu:</span><br><span class="line">      description: vBBU Service Slice</span><br><span class="line">      type: tosca.nodes.Slice</span><br><span class="line">      properties:</span><br><span class="line">          name: &#123;&#123; site_name &#125;&#125;_vbbu1</span><br><span class="line">          default_isolation: vm</span><br><span class="line">          network: noauto</span><br><span class="line">      requirements:</span><br><span class="line">          - site:</span><br><span class="line">              node: &#123;&#123; site_name &#125;&#125;</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - service:</span><br><span class="line">              node: service#oaibbu</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - default_image:</span><br><span class="line">              node: develop-oai-bbu</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br><span class="line">          - default_flavor:</span><br><span class="line">              node: m1.large</span><br><span class="line">              relationship: tosca.relationships.BelongsToOne</span><br></pre></td></tr></table></figure>
-<h3 id="Create-OAI-BBU-instance-from-CORD-GUI"><a href="#Create-OAI-BBU-instance-from-CORD-GUI" class="headerlink" title="Create OAI BBU instance from CORD GUI"></a>Create OAI BBU instance from CORD GUI</h3><ul>
-<li>Click Oaibbuservice</li>
-<li>OAI BBU service instances</li>
-<li>Add</li>
-<li>Choose owner id OAIBBU_Service</li>
-<li>Save</li>
-<li>After few minutes, you can check at instances page</li>
-</ul>
-<p><img src="https://i.imgur.com/yc4Kcbe.png" alt=""></p>
-<p><img src="https://i.imgur.com/MaXFX1m.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vagrant@head1:~$ source /opt/cord_profile/admin-openrc.sh</span><br><span class="line">vagrant@head1:~$ nova list --all-tenants</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| ID                                   | Name              | Status | Task State | Power State | Networks                                                       |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| be2f6587-35f8-468b-b648-aa19609969bd | mysite_oaispgw1-1 | ACTIVE | -          | Running     | management=172.27.0.4; public=10.8.1.2; vspgw_network=10.0.8.2 |</span><br><span class="line">| a22fdde3-fade-4ce6-87a6-fad844fc1202 | mysite_oaispgw1-4 | ACTIVE | -          | Running     | management=172.27.0.5; public=10.8.1.3; vspgw_network=10.0.8.3 |</span><br><span class="line">| c4e93cb5-c91c-4807-87e8-7212139c772b | mysite_vbbu1-5    | ACTIVE | -          | Running     | management=172.27.0.6; vbbu_network=10.0.5.2                   |</span><br><span class="line">| 92ede522-defe-47e4-9220-fd0793816957 | mysite_vhss1-3    | ACTIVE | -          | Running     | management=172.27.0.2; vhss_network=10.0.7.2                   |</span><br><span class="line">| 81ddd5f8-5090-4aab-8170-5e02bcdc8081 | mysite_vmme1-2    | ACTIVE | -          | Running     | management=172.27.0.3; vmme_network=10.0.6.2                   |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
-<h2 id="Command-for-using-OAI-BBU"><a href="#Command-for-using-OAI-BBU" class="headerlink" title="Command for using OAI BBU"></a>Command for using OAI BBU</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ssh head1</span><br><span class="line">scp ~/.ssh/id_rsa ubuntu@10.1.0.14:~/.ssh</span><br><span class="line">ssh ubuntu@10.1.0.14</span><br><span class="line">ssh oai@&lt;management IP&gt;</span><br><span class="line"></span><br><span class="line">sudo su</span><br><span class="line">cd openairinterface/cmake_targets/lte_build_oai/build/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> for execute develop branch at RCC side</span><br><span class="line">sudo ./lte-softmodem -E -O ../../../targets/PROJECTS/GENERIC-LTE-EPC/CONF/rcc.band7.tm1.50PRB.nfapi.conf</span><br></pre></td></tr></table></figure>
-<p>already have the vbbu service, but still need to check connectivity with vMME &amp; vHSS</p>
-<p><img src="https://i.imgur.com/fUvh9Cq.png" alt=""></p>
-<h2 id="Check-connectivity-to-each-service"><a href="#Check-connectivity-to-each-service" class="headerlink" title="Check connectivity to each service"></a>Check connectivity to each service</h2><p>Use tmux to manage multiple slices of VNF service</p>
-<p><img src="https://i.imgur.com/mnYzAUW.png" alt=""></p>
-<h2 id="Command-for-re-deploy-service"><a href="#Command-for-re-deploy-service" class="headerlink" title="Command for re-deploy service"></a>Command for re-deploy service</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> clean service / profile</span><br><span class="line">cord@cord:~/cord/build$ make xos-teardown; make clean-openstack; make clean-profile;</span><br><span class="line">cord@cord:~/cord/build$ cd genconfig/ &amp;&amp; rm -rf config.* cord_* inventory.ini;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> update configuration</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> re-build</span><br><span class="line">cord@cord:~/cord/build$ make PODCONFIG=mcord-oai-virtual.yml config</span><br><span class="line">cord@cord:~/cord/build$ make -j4 build; make compute-node-refresh</span><br></pre></td></tr></table></figure>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h2><p>The lifecycle of CORD will be very short due to the openstack error.<br>If you keep the VNF running, the lifecycle will be most likely one weeks.</p>
-<p>So each time when doing the implementation, after testing shut done all the service.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># shut done</span><br><span class="line">make xos-teardown; make clean-openstack</span><br><span class="line"></span><br><span class="line"># Refresh</span><br><span class="line">make -j4 build; make compute-node-refresh</span><br></pre></td></tr></table></figure>
-          
+Use the “code” which can be executed by software to present the IT system infrastructure state.
+The
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/10/Ansible-Note/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -728,72 +440,153 @@
       
         
           
-            <h1 id="OAI-vRAN-in-M-CORD-project"><a href="#OAI-vRAN-in-M-CORD-project" class="headerlink" title="OAI vRAN in M-CORD project"></a>OAI vRAN in M-CORD project</h1><pre><code>NTUST BMW LAB./ Nick
-</code></pre><h2 id="Milestone-and-target"><a href="#Milestone-and-target" class="headerlink" title="Milestone and target"></a>Milestone and target</h2><ul>
-<li><strong>[done]</strong> System Architecture for OAI virtualization</li>
-</ul>
-<hr>
-<p><img src="https://i.imgur.com/Og82xOC.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> Successfully install Cord-in-a-Box (CiaB)</p>
-<ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">Note and record for Cord in a Box porting</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>[done]</strong> OAI vEPC over CiaB <ul>
-<li>XOS service and synchonizer has been developed by <strong>NCTU</strong></li>
-<li>result for porting OAI vEPC (including VHHS VSPGW VMME)</li>
-</ul>
-</li>
-</ul>
-<p>Nova instance observation</p>
-<p><img src="https://i.imgur.com/4IOCGqy.png" alt=""></p>
-<p>Snapshot for vEPC service</p>
-<p><img src="https://i.imgur.com/2S8zDln.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> OAI vRAN over CiaB</p>
-<ul>
-<li>detail :  <ul>
-<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer for OAI BBU</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-<li><a href="/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1">Connection scenario with OAI service in M-CORD 4.1</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Service graph</p>
-<p><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
-<p>Openstack resource observation</p>
-<p><img src="https://i.imgur.com/V1cnN54.png" alt=""></p>
-<p>Nova instance observation<br><img src="https://i.imgur.com/tkAX7Rv.png" alt=""></p>
-<p>Succefully connect oaibbu to vEPC<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
-<hr>
-<ul>
-<li><strong>[ongoing]</strong> UE makes phone call over vRAN</li>
-</ul>
-<h2 id="Note-for-more-detail"><a href="#Note-for-more-detail" class="headerlink" title="Note for more detail"></a>Note for more detail</h2><ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">How to port Cord in a box in M-Cord scenario ver 4.1</a></li>
-<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
-<li><a href="/2018/04/17/django">Data Model - Django</a></li>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-<li><a href="">SDN Network in CORD</a></li>
-</ul>
-<h2 id="XOS-service-and-automation-scripts-for-deploying-OAI-BBU"><a href="#XOS-service-and-automation-scripts-for-deploying-OAI-BBU" class="headerlink" title="XOS service and automation scripts for deploying OAI BBU"></a>XOS service and automation scripts for deploying OAI BBU</h2><ul>
-<li><p><a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">XOS service of OAI BBU</a></p>
-</li>
-<li><p><a href="https://gitlab.com/NickHoB/oaibbu_script" target="_blank" rel="noopener">OAI-based M-CORD scripts</a></p>
-</li>
-</ul>
+          OAI vRAN in M-CORD projectNTUST BMW LAB./ Nick
+Milestone and target
+[done] System Architecture for OAI virtualization
+
+
+
+
+
+[done] Successfully install
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/10/OAI-vRAN-in-M-CORD-project/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/onboard-oai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/10/onboard-oai/" itemprop="url">On board OAI BBU service over M-CORD 4.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T12:00:59+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          create image for openstackRequirement: A physical machine with ubuntu OS.
+python scripts here
+Description below
+trouble shooting:
+virt-install-os-vari
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/10/onboard-oai/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -911,110 +704,19 @@
       
         
           
-            <p>Concept of SDN : disaggregate control plane and data plane.</p>
-<ul>
-<li>control plane : to show how the packet route</li>
-</ul>
-<h2 id="Pre-knowledge-for-SDN-network"><a href="#Pre-knowledge-for-SDN-network" class="headerlink" title="Pre-knowledge for SDN network"></a>Pre-knowledge for SDN network</h2><h3 id="Underlay-amp-Overlay-in-Data-center-network"><a href="#Underlay-amp-Overlay-in-Data-center-network" class="headerlink" title="Underlay &amp; Overlay in Data center network"></a>Underlay &amp; Overlay in Data center network</h3><p>In recent years, deploying a big amounts of VMs becomes necessary since the universality of technologys (e.g. cloud-comuting, big data etc).<br>The migration/mobility/scale of the VMs will be strongly restricted by the traditional network infrastructure.<br>To deal with this problem, it better to add an Overlay (logical network) on the Underlay(traditional network) basic.</p>
-<p>Under Underlay network, all the packet flow will be determined by controller, controller will use OpenFlow or BPG protocal to controll overlay (透過轉發器)<br>Under Overlay network, it usually traddional equiptment which didn’t support OpenFlow. So it will use tunnelling technology to go through that kind of equipment</p>
-<p>Underlay:</p>
-<ul>
-<li>Original internet equiptment.</li>
-<li>底層網路，負責互聯互通</li>
-</ul>
-<p>Overlay:</p>
-<ul>
-<li>網路架構疊加虛擬化</li>
-<li>在不進行大規模修改的條件下，實現應用在網路上的乘載，並能與其他業務分離。</li>
-<li>建立在已有網路上的虛擬往，用邏輯節點跟邏輯線路構成了Overlay網路。</li>
-<li>獨立的control plane和轉發平面</li>
-<li>TRILL, NVGRE, STT, VXLAN</li>
-<li>佈署不受限制並且自動，對傳統網路修改小，重要的是VM與時體積都可以接入Overlay網路</li>
-</ul>
-<p>Overlay網路和Underlay網路是獨立的</p>
-<h2 id="SDN-Architecture"><a href="#SDN-Architecture" class="headerlink" title="SDN Architecture"></a>SDN Architecture</h2><p><img src="https://i.imgur.com/uRTfNq8.png" alt=""></p>
-<ul>
-<li>API = REST API</li>
-</ul>
-<h2 id="SDN-Switch"><a href="#SDN-Switch" class="headerlink" title="SDN Switch"></a>SDN Switch</h2><p><img src="https://i.imgur.com/BpQXIGx.png" alt=""></p>
-<ul>
-<li>box = 白牌盒子</li>
-<li>openstack 建置可能考慮Cumulus Linux, big switch</li>
-</ul>
-<h2 id="SDN-controller"><a href="#SDN-controller" class="headerlink" title="SDN controller"></a>SDN controller</h2><p><img src="https://i.imgur.com/MPjr40E.png" alt=""></p>
-<ul>
-<li>open daylight 是設備商主導推出的軟體，為了讓他們的設備賣得更好 </li>
-<li>ONOS 組成主要是電信商，比較偏應用導向。</li>
-<li>Liu  日本NTT主導的controller，最好上手，架構也很簡單。</li>
-</ul>
-<h2 id="ONOS-controller"><a href="#ONOS-controller" class="headerlink" title="ONOS controller"></a>ONOS controller</h2><p>提供Carrier-Grade等級能力</p>
-<ul>
-<li>High Availability (Cluster)</li>
-<li>High Performance (Can deal with tens milloins of End point)</li>
-<li>Low Latency</li>
-<li>Easy to Scale out</li>
-</ul>
-<p>Architecture</p>
-<p><img src="https://i.imgur.com/nU1T2Jn.png" alt=""></p>
-<ul>
-<li>每個Instance都是一個VM，我們把這些VM綁在一起形成一個cluster</li>
-<li>Cluster會碰到的問題：資料怎麼保持一致性，並且保證狀態都一致</li>
-<li>在Distributed Core可以解決這個問題</li>
-<li>南向API會支持一些protocol(Openflow, SAMP etc)，設備跟controller溝通的介面</li>
-<li>北向API則是邏輯判斷封包該怎麼流動</li>
-<li>建議建立奇數個Instance</li>
-</ul>
-<h2 id="Network-infrastrcuture-for-CORD"><a href="#Network-infrastrcuture-for-CORD" class="headerlink" title="Network infrastrcuture for CORD"></a>Network infrastrcuture for CORD</h2><p>Trellis</p>
-<p><img src="https://i.imgur.com/IRXFd0i.png" alt=""></p>
-<p>Trellis in CORD architecture</p>
-<p><img src="https://i.imgur.com/KwhvPw6.png" alt=""></p>
-<p>In the current implementation, there are actually two sets of ONOS controllers with different responsibilities. </p>
-<p>The first ONOS cluster (onos-cord) is responsible for the overlay infrastructure (virtual networking and service composition) and the access infrastructure. This cluster hosts the VTN and vOLT applications, respectively.</p>
-<p>The second ONOS cluster (onos-fabric) is responsible for controlling the fabric and interfacing with conventional upstream routers. This cluster hosts the Fabric Control and vRouter applications, respectively.</p>
-<p>Multicast control is via two additional applications, IGMP snooping and PIM-SSM, where the former runs on onos-cord and the latter runs on onos-fabric. </p>
-<h3 id="Trellis-Underlay-Fabric"><a href="#Trellis-Underlay-Fabric" class="headerlink" title="Trellis Underlay Fabric"></a>Trellis Underlay Fabric</h3><ul>
-<li>The underlay hardware fabric is controlled by an application (called ‘segmentrouting’) in ONOS. It interacts with a number of other applications like vRouter, vOLT and multicast applications to provide CORD services</li>
-<li>CORD network architecture:<ul>
-<li>SDN based Leaf-Spine fabric built with bare-metal (OCP certified) hardware and open-source switch software.</li>
-<li>The fabric has the following characteristics:<ul>
-<li>L2 switching within a rack handled at leaf-switches (ToRs).</li>
-<li>L3 forwarding across racks using ECMP hashing and MPLS segment routing.</li>
-<li>vRouter integration for interfacing with upstream metro-router, providing reachability to publicly routable IP addresses.</li>
-<li>VLAN cross-connect feature to switch QinQ packets between OLT I/O blades and vSG containers (R-CORD feature).</li>
-<li>IPv4 multicast forwarding and pruning for IPTV streams (with vRouter integration) from upstream router to residential subscribers (R-CORD feature).</li>
-<li>XOS integration via REST API calls to dynamically configure end-hosts and VLAN cross-connects at runtime.</li>
-<li>Ability to use the fabric in single-rack or multi-rack configurations.</li>
-</ul>
-</li>
-<li>the fabric forms the underlay network in an overlay/underlay architecture. The overlay (sometimes referred to as the outer fabric) is also SDN based.<ul>
-<li>Use of software-switches (eg. OvS with DPDK) with a custom-designed pipeline for service-chaining.</li>
-<li>Distributed load-balancing per service in each OvS.</li>
-<li>VxLAN tunneling in OvS for overlay-based virtual networks.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>The biggest advantage of common SDN control over both the overlay infrastructure as well as the underlay fabric is that they can be orchestrated together and optimized to deliver the features and services that Central Offices require, with the agility and economies of datacenter operations.</p>
-<p>Fabric Operation as an Underlay</p>
-<p><img src="https://i.imgur.com/WzTXXd0.png" alt=""></p>
-<p><img src="https://i.imgur.com/huQdacL.png" alt=""></p>
-<h3 id="Virtual-Tenant-Networks-amp-Service-Composition"><a href="#Virtual-Tenant-Networks-amp-Service-Composition" class="headerlink" title="Virtual Tenant Networks &amp; Service Composition"></a>Virtual Tenant Networks &amp; Service Composition</h3><p>CORD service Composition</p>
-<p><img src="https://i.imgur.com/RDbMtBV.png" alt=""></p>
-<h3 id="Connect-to-ONOS-CLI-in-CORD"><a href="#Connect-to-ONOS-CLI-in-CORD" class="headerlink" title="Connect to ONOS CLI in CORD"></a>Connect to ONOS CLI in CORD</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ssh head1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> connect to the onos service CLI</span><br><span class="line">ssh -p 8102 onos@onos-cord</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> default password: rocks</span><br></pre></td></tr></table></figure>
-<h2 id="ONOS-SDN-IP-Appendix"><a href="#ONOS-SDN-IP-Appendix" class="headerlink" title="ONOS SDN-IP (Appendix)"></a>ONOS SDN-IP (Appendix)</h2><p><img src="https://i.imgur.com/L6ufLXl.png" alt=""></p>
-<ul>
-<li>基於SDN環境建立BGP Speaker跟外界交換BGP information (BGP: AS 跟 AS 間做的messeage exchange)</li>
-<li>採用Quagga來當BGP Speaker <ul>
-<li>Quagga並非直接跟switch連接</li>
-<li>連接過程透過SDN-IP，會去偵測BGP的一些特徵，例如固定使用的Port，並forward到Quagga</li>
-<li>有兩個BGP speaker，分別做內部的BGP交換(iBGP)</li>
-</ul>
-</li>
-<li>採用 Openflow-enable Switch 來建立連線溝通</li>
-</ul>
+          Concept of SDN : disaggregate control plane and data plane.
 
-          
+control plane : to show how the packet route
+
+Pre-knowledge for SDN networkUnderlay &amp;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/10/SDN-network-in-CORD/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1132,76 +834,21 @@
       
         
           
-            <h2 id="Modify-network-configuration-of-OAI-BBU-MME-SPGW-HSS"><a href="#Modify-network-configuration-of-OAI-BBU-MME-SPGW-HSS" class="headerlink" title="Modify network configuration of OAI BBU, MME, SPGW, HSS"></a>Modify network configuration of OAI BBU, MME, SPGW, HSS</h2><p>Configuration path: </p>
-<ul>
-<li>[BBU] <ul>
-<li>/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF</li>
-</ul>
-</li>
-<li>[MME] <ul>
-<li>/usr/local/etc/oai/mme.conf</li>
-<li>/usr/local/etc/oai/freeDiameters/mme_fd.conf</li>
-</ul>
-</li>
-<li>[SPGW]<ul>
-<li>/usr/local/etc/oai/spgw.conf</li>
-</ul>
-</li>
-<li>[HSS]<ul>
-<li>No need to modify</li>
-</ul>
-</li>
-</ul>
-<h2 id="BBU-configuration-Connect-to-MME-and-BBU"><a href="#BBU-configuration-Connect-to-MME-and-BBU" class="headerlink" title="BBU configuration (Connect to MME and BBU)"></a>BBU configuration (Connect to MME and BBU)</h2><p><code>/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF
-rcc.band7.tm1.50PRB.nfapi.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">    ////////// MME parameters:</span><br><span class="line">    mme_ip_address      = ( &#123; ipv4       = &quot;10.0.6.2&quot;; // MME IP</span><br><span class="line">                              ipv6       = &quot;192:168:30::17&quot;;</span><br><span class="line">                              active     = &quot;yes&quot;;</span><br><span class="line">                              preference = &quot;ipv4&quot;;</span><br><span class="line">                            &#125;</span><br><span class="line">                          );</span><br><span class="line"></span><br><span class="line">    NETWORK_INTERFACES :</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1_MME            = &quot;eth0&quot;; // your BBU config</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1_MME              = &quot;10.0.5.2&quot;; // your BBU ip</span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1U               = &quot;eth0&quot;;</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1U                 = &quot;10.0.5.2&quot;;</span><br><span class="line">        ENB_PORT_FOR_S1U                         = 2152; # Spec 2152</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">MACRLCs = (</span><br><span class="line">        &#123;</span><br><span class="line">        num_cc = 1;</span><br><span class="line">        local_s_if_name  = &quot;lo&quot;;</span><br><span class="line">        remote_s_address = &quot;127.0.0.1&quot;; // connect to RU </span><br><span class="line">        local_s_address  = &quot;127.0.0.2&quot;; // local address</span><br><span class="line">        local_s_portc    = 50001;</span><br><span class="line">        remote_s_portc   = 50000;</span><br><span class="line">        local_s_portd    = 50011;</span><br><span class="line">        remote_s_portd   = 50010;</span><br><span class="line">        tr_s_preference = &quot;nfapi&quot;;</span><br><span class="line">        tr_n_preference = &quot;local_RRC&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="MME-Configuration-Connect-to-BBU-amp-HSS-amp-SPGW"><a href="#MME-Configuration-Connect-to-BBU-amp-HSS-amp-SPGW" class="headerlink" title="MME Configuration (Connect to BBU &amp; HSS &amp; SPGW)"></a>MME Configuration (Connect to BBU &amp; HSS &amp; SPGW)</h2><p><code>/usr/local/etc/oai/mme.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"># ------- MME served GUMMEIs</span><br><span class="line"># MME code DEFAULT  size = 8 bits</span><br><span class="line"># MME GROUP ID size = 16 bits</span><br><span class="line">GUMMEI_LIST = (</span><br><span class="line">     &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;; MME_GID=&quot;4&quot; ; MME_CODE=&quot;1&quot;; &#125;   # should be same as BBU config</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># ------- MME served TAIs</span><br><span class="line"># TA (mcc.mnc:tracking area code) DEFAULT = 208.34:1</span><br><span class="line"># max values = 999.999:65535</span><br><span class="line"># maximum of 16 TAIs, comma separated</span><br><span class="line"># !!! Actually use only one PLMN</span><br><span class="line">TAI_LIST = (</span><br><span class="line">     &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;1&quot;; &#125;                                   # should be same as BBU config</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">NETWORK_INTERFACES :</span><br><span class="line">&#123;</span><br><span class="line">    # MME binded interface for S1-C or S1-MME  communication (S1AP), can be ethernet interface, virtual ethernet interface, we don&apos;t advise wireless interfaces</span><br><span class="line">    MME_INTERFACE_NAME_FOR_S1_MME         = &quot;ens3&quot;;                        # MME CONFIG HERE</span><br><span class="line">    MME_IPV4_ADDRESS_FOR_S1_MME           = &quot;10.0.6.2/24&quot;;                 # YOUR MME CONFIG HERE</span><br><span class="line"></span><br><span class="line">    # MME binded interface for S11 communication (GTPV2-C)</span><br><span class="line">    MME_INTERFACE_NAME_FOR_S11_MME        = &quot;ens3&quot;;                           # YOUR NETWORK CONFIG HERE</span><br><span class="line">    MME_IPV4_ADDRESS_FOR_S11_MME          = &quot;10.0.6.2/24&quot;;                 # YOUR MME CONFIG HERE</span><br><span class="line">    MME_PORT_FOR_S11_MME                  = 2123;                           # YOUR MME CONFIG HERE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">S-GW_LIST_SELECTION = (</span><br><span class="line"># SPGW IP here</span><br><span class="line">     &#123;ID=&quot;tac-lb01.tac-hb00.tac.epc.mnc001.mcc001.3gppnetwork.org&quot; ; SGW_IPV4_ADDRESS_FOR_S11=&quot;10.0.8.2/24&quot;;&#125; </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><code>/usr/local/etc/oai/freeDiameter/mme_fd.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># set HSS IP here</span><br><span class="line">ConnectPeer= &quot;hss.openair4G.eur&quot; &#123; ConnectTo = &quot;10.0.7.2&quot;; No_SCTP ; No_IPv6; Prefer_TCP; No_TLS; port = 3868;  realm = &quot;openair4G.eur&quot;;&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="SPGW-configuration-connect-to-MME"><a href="#SPGW-configuration-connect-to-MME" class="headerlink" title="SPGW configuration (connect to MME)"></a>SPGW configuration (connect to MME)</h2><p><code>/usr/local/etc/oai/spgw.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">S-GW :</span><br><span class="line">&#123;</span><br><span class="line">NETWORK_INTERFACES :</span><br><span class="line">&#123;</span><br><span class="line">    # S-GW binded interface for S11 communication (GTPV2-C), if none selected the ITTI message interface is used</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S11              = &quot;ens5&quot;;                         # STRING, interface name, YOUR NETWORK CONFIG HERE</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S11                = &quot;10.0.8.2/24&quot;;               # SPGW config</span><br><span class="line"></span><br><span class="line">    # S-GW binded interface for S1-U communication (GTPV1-U) can be ethernet interface, virtual ethernet interface, we don&apos;t advise wireless interfaces</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP    = &quot;ens5&quot;;                         # STRING, interface name, YOUR NETWORK CONFIG HERE, USE &quot;lo&quot; if S-GW run on eNB host</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S1U_S12_S4_UP      = &quot;10.0.8.2/24&quot;;              # SPGW config</span><br><span class="line">    SGW_IPV4_PORT_FOR_S1U_S12_S4_UP         = 2152;                         # INTEGER, port number, PREFER NOT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING</span><br><span class="line"></span><br><span class="line">    # S-GW binded interface for S5 or S8 communication, not implemented, so leave it to none</span><br><span class="line">    SGW_INTERFACE_NAME_FOR_S5_S8_UP         = &quot;none&quot;;                       # STRING, interface name, DO NOT CHANGE (NOT IMPLEMENTED YET)</span><br><span class="line">    SGW_IPV4_ADDRESS_FOR_S5_S8_UP           = &quot;0.0.0.0/24&quot;;                 # STRING, CIDR, DO NOT CHANGE (NOT IMPLEMENTED YET)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ssh head1</span><br><span class="line"><span class="meta">head1$</span> scp ~/.ssh/id_rsa ubuntu@10.1.0.14:~/.ssh</span><br><span class="line"><span class="meta">head1$</span> ssh ubuntu@10.1.0.14</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> SSH into Service Instance, reference to nova output</span><br><span class="line">ubuntu@multicolored-jump:~$ ssh ubuntu@172.27.0.2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vHSS Service Instance</span><br><span class="line">ubuntu@vhss:~$ sudo su -</span><br><span class="line">root@vhss:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@vhss:~/openair-cn/SCRIPT$ ./run_hss</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vMME Service Instance</span><br><span class="line">ubuntu@nano:~$ sudo su -</span><br><span class="line">root@nano:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@nano:~/openair-cn/SCRIPT$ ./run_mme</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> This is vSPGW Service Instance</span><br><span class="line">ubuntu@spgw:~$ sudo su -</span><br><span class="line">root@spgw:~$ cd ~/openair-cn/SCRIPT/</span><br><span class="line">root@spgw:~/openair-cn/SCRIPT$ ./run_spgw</span><br></pre></td></tr></table></figure>
-<h3 id="Connectivity-check-between-BBU-amp-vEPC"><a href="#Connectivity-check-between-BBU-amp-vEPC" class="headerlink" title="Connectivity check between BBU &amp; vEPC"></a>Connectivity check between BBU &amp; vEPC</h3><p>BBU with associated MME<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
-<p>Service dependency graph<br><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
-<h2 id="Setup-a-connection-between-RRU-amp-BBU"><a href="#Setup-a-connection-between-RRU-amp-BBU" class="headerlink" title="Setup a connection between RRU &amp; BBU"></a>Setup a connection between RRU &amp; BBU</h2><p><img src="https://i.imgur.com/xfZR1pS.png" alt=""></p>
-<p>first, we should do the nested port foward to access the BBU service</p>
-<p><img src="https://i.imgur.com/UcHV1ZU.png" alt=""></p>
-<hr>
-<p>Rule should be add at all node:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> at cord server</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Forward the packet from CORD server's port 10022 to the head node's port 10022</span><br><span class="line"><span class="meta">#</span> enp4s0f0 should be your public network interface </span><br><span class="line"><span class="meta">#</span> 192.168.121.238 is the head node interface</span><br><span class="line">-A PREROUTING -i enp4s0f0 -p tcp -m tcp --dport 10022 -j DNAT --to-destination 192.168.121.238:10022</span><br><span class="line">-A FORWARD -d 192.168.121.238/32 -p tcp -m tcp --dport 10022 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> check the rules by iptables</span><br><span class="line"></span><br><span class="line">cord@cord:sudo iptables -L</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ssh to head node</span><br><span class="line">cord@cord:ssh head1</span><br><span class="line">vagrant@head1:~$sudo su </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> forward packet from head port's 10022 to compute node's port 10023</span><br><span class="line">-A PREROUTING -i eth0 -p tcp -m tcp --dport 10022 -j DNAT --to-destination 10.1.0.14:10023</span><br><span class="line">-A FORWARD -d 10.1.0.14/32 -p tcp -m tcp --dport 10023 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ssh to compute node</span><br><span class="line">vagrant@head1:~$ssh ubuntu@10.1.0.14</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> forward packet form node's port 10023 to oai service's port 22</span><br><span class="line">iptables -A PREROUTING -i mgmtbr -p tcp -m tcp --dport 10023 -j DNAT --to-destination 172.27.0.6:22</span><br><span class="line">-A POSTROUTING -p tcp --dport 22 --dst 172.27.0.6 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> to verify ssh successfully or not in each step </span><br><span class="line">sudo tcpdump -i &lt;NIC interface&gt; port &lt;PORT number&gt;</span><br></pre></td></tr></table></figure>
-<p>The way to update iptables</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> note, use iptables-save and iptables-restore would be better to addjust the rules</span><br><span class="line"></span><br><span class="line">sudo su</span><br><span class="line"></span><br><span class="line">vim iptables.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Add rules and make sure all the policy is what you want</span><br><span class="line"></span><br><span class="line">iptables-restore &lt; iptables.rules</span><br></pre></td></tr></table></figure>
-<hr>
-<p>The iptables rules that I used for this implementation</p>
-<p><a href="https://gist.github.com/nick133371/7d6c9b8d0f2e8389e07f328689340813" target="_blank" rel="noopener">CORD Server iptables template</a><br><a href="https://gist.github.com/nick133371/cbfbee6e9413cd48bdc8124b3402c0ab" target="_blank" rel="noopener">Head node iptables template</a><br><a href="https://gist.github.com/nick133371/8f10171c052f88b94b39daf7b4017e74" target="_blank" rel="noopener">Compute node iptables template</a></p>
-<p>for SCTP Forwarding</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A PREROUTING -i eth0 -p sctp -m sctp --dport 50000 -j DNAT --to-destination 10.1.0.14:50000</span><br><span class="line">-A POSTROUTING -d 10.1.0.14 -o mgmtbr -p sctp -j SNAT --to-source 192.168.121.16</span><br></pre></td></tr></table></figure>
-<hr>
-<p>Do sudo iptables -L</p>
-<p>At CORD server : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Chain FORWARD (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination         </span><br><span class="line">ACCEPT     tcp  --  anywhere             192.168.121.16       tcp dpt:10022</span><br><span class="line">ACCEPT     sctp --  anywhere             192.168.121.16       sctp dpt:50000</span><br><span class="line">ACCEPT     udp  --  anywhere             192.168.121.16       udp dpt:50010</span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             10.100.198.0/24      ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  10.100.198.0/24      anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             192.168.121.0/24     ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  192.168.121.0/24     anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">ACCEPT     all  --  anywhere             192.168.122.0/24     ctstate RELATED,ESTABLISHED</span><br><span class="line">ACCEPT     all  --  192.168.122.0/24     anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br><span class="line">REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable</span><br></pre></td></tr></table></figure>
-<p>At head node : </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Chain FORWARD (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination         </span><br><span class="line">ACCEPT     tcp  --  anywhere             10-1-0-14.cord.lab   tcp dpt:10023</span><br><span class="line">ACCEPT     sctp --  anywhere             10-1-0-14.cord.lab   sctp dpt:50001</span><br><span class="line">ACCEPT     udp  --  anywhere             portly-eye.cord.lab  udp dpt:50011</span><br><span class="line">DOCKER-USER  all  --  anywhere             anywhere            </span><br><span class="line">DOCKER-ISOLATION  all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere            </span><br><span class="line">ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED</span><br><span class="line">DOCKER     all  --  anywhere             anywhere</span><br></pre></td></tr></table></figure>
-<hr>
-<p>Successfully implement the SSH tunnel </p>
-<p><img src="https://i.imgur.com/ruDlpWA.png" alt=""></p>
-<h3 id="Configure-oaibbu-with-public-network"><a href="#Configure-oaibbu-with-public-network" class="headerlink" title="Configure oaibbu with public network"></a>Configure oaibbu with public network</h3><p>Add Network definition into ==mcord-oai-services.yml.j2==</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">oaibbu_public_network:</span><br><span class="line">  type: tosca.nodes.NetworkSlice</span><br><span class="line">  requirements:</span><br><span class="line">    - network:</span><br><span class="line">        node: public</span><br><span class="line">        relationship: tosca.relationships.BelongsToOne</span><br><span class="line">    - slice:</span><br><span class="line">        node: &#123;&#123; site_name &#125;&#125;_oaibbu</span><br><span class="line">        relationship: tosca.relationships.BelongsToOne</span><br></pre></td></tr></table></figure>
-<p>After rebooting</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vagrant@head1:~$ source /opt/cord_profile/admin-openrc.sh</span><br><span class="line">vagrant@head1:~$ nova list --all-tenants</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br><span class="line">| ID                                   | Name              | Status | Task State | Power State | Networks                                                        |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br><span class="line">| 0b2aebaf-f5de-421e-8d09-bf27619d33bc | mysite_oaibbu1-5  | ACTIVE | -          | Running     | management=172.27.0.6; public=10.8.1.4; oaibbu_network=10.0.4.2 |</span><br><span class="line">| 64ece792-9e7f-4125-8fd5-9e5cb90234cd | mysite_oaispgw1-1 | ACTIVE | -          | Running     | management=172.27.0.2; public=10.8.1.2; vspgw_network=10.0.8.2  |</span><br><span class="line">| 958ad833-205e-489a-99a8-cf637e813366 | mysite_oaispgw1-4 | ACTIVE | -          | Running     | management=172.27.0.4; public=10.8.1.3; vspgw_network=10.0.8.3  |</span><br><span class="line">| 9d2f47b6-e4e3-4f77-812b-878749185b1a | mysite_vhss1-3    | ACTIVE | -          | Running     | management=172.27.0.5; vhss_network=10.0.7.2                    |</span><br><span class="line">| ed42a403-25c7-4dfd-a3c4-f188997b85ba | mysite_vmme1-2    | ACTIVE | -          | Running     | management=172.27.0.3; vmme_network=10.0.6.2                    |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+-----------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
-<h2 id="Connection-scenario-BBU-amp-RRU"><a href="#Connection-scenario-BBU-amp-RRU" class="headerlink" title="Connection scenario BBU &amp; RRU"></a>Connection scenario BBU &amp; RRU</h2><h3 id="BBU-configuration"><a href="#BBU-configuration" class="headerlink" title="BBU configuration"></a>BBU configuration</h3><p>==rcc.band7.tm1.50PRB.nfapi.conf==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MACRLCs = (</span><br><span class="line">	&#123;</span><br><span class="line">	num_cc = 1;</span><br><span class="line">      	local_s_if_name  = &quot;eth0&quot;;			  </span><br><span class="line">      	remote_s_address = &quot;140.118.123.218&quot;; # RRU Physical machine IP</span><br><span class="line">    	local_s_address  = &quot;10.0.4.2&quot;; # Private IP in CORD</span><br><span class="line">    	local_s_portc    = 50000;	</span><br><span class="line">    	remote_s_portc   = 50001;</span><br><span class="line">    	local_s_portd    = 50010;	</span><br><span class="line">    	remote_s_portd   = 50011;</span><br><span class="line">	tr_s_preference = &quot;nfapi&quot;;</span><br><span class="line">	tr_n_preference = &quot;local_RRC&quot;;</span><br><span class="line">        &#125;  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="RRU-Configuration"><a href="#RRU-Configuration" class="headerlink" title="RRU Configuration"></a>RRU Configuration</h3><p>==oaiL1.nfapi.usrpb210.conf==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">L1s = (</span><br><span class="line">    	&#123;</span><br><span class="line">	num_cc = 1;</span><br><span class="line">	tr_n_preference = &quot;nfapi&quot;;</span><br><span class="line">      	local_n_if_name  = &quot;eth0&quot;;			  </span><br><span class="line">      	remote_n_address = &quot;140.118.122.109&quot;;</span><br><span class="line">    	local_n_address  = &quot;140.118.123.218&quot;;  # RRU Physical machine IP</span><br><span class="line">    	local_n_portc    = 50001;	</span><br><span class="line">        remote_n_portc   = 50000;</span><br><span class="line">        local_n_portd    = 50011;</span><br><span class="line">        remote_n_portd   = 50010;</span><br><span class="line">        &#125;  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>Forwarding packet path (STCP &amp; UDP):<br>CORD Server=&gt; Control node =&gt; Compute node =&gt; OAI bbu public IP<br>140.118.122.109 =&gt; 192.168.121.1 =&gt; 10.1.0.14 = 10.0.4.2</p>
-<h3 id="BBU-Connect-to-RRU-in-physical-machine"><a href="#BBU-Connect-to-RRU-in-physical-machine" class="headerlink" title="BBU Connect to RRU in physical machine"></a>BBU Connect to RRU in physical machine</h3><p>branch: be8d32d5</p>
-<p><img src="https://i.imgur.com/oGzvTVH.png" alt=""></p>
-<p><img src="https://i.imgur.com/fExLdmU.png" alt=""></p>
-<h3 id="Automation-scripts"><a href="#Automation-scripts" class="headerlink" title="Automation scripts"></a>Automation scripts</h3><p>==Command for automation ip setting==<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;hostname&gt;@&lt;IP&gt; 'bash -s' &lt; test.sh</span><br></pre></td></tr></table></figure></p>
-<p>==test.sh==<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Server iptables configuration </span><br><span class="line">echo start Iptables configuration for server</span><br><span class="line"></span><br><span class="line">git clone https://gist.github.com/7d6c9b8d0f2e8389e07f328689340813.git ip</span><br><span class="line">cd ip/</span><br><span class="line"><span class="meta">#</span> adapt iptables rule</span><br><span class="line">sudo iptables-restore &lt; Iptables_cord_server.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> head1 iptables configuration</span><br><span class="line">ssh head1</span><br><span class="line">git clone https://gist.github.com/cbfbee6e9413cd48bdc8124b3402c0ab.git ip</span><br><span class="line">cd ip/</span><br><span class="line"><span class="meta">#</span> adapt iptables rule</span><br><span class="line">sudo iptables-restore &lt; Iptables_head_node.rules</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> compute node iptables configuration</span><br><span class="line">ssh ubuntu@10.1.0.14</span><br><span class="line">git clone https://gist.github.com/8f10171c052f88b94b39daf7b4017e74.git ip</span><br><span class="line">cd ip/</span><br><span class="line">sudo iptables-restore &lt; Iptables_compute_node.rules</span><br></pre></td></tr></table></figure></p>
+          Modify network configuration of OAI BBU, MME, SPGW, HSSConfiguration path: 
 
-          
+[BBU] 
+/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF
+
+
+[MME] 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/10/Connection-scenario-with-OAI-service-in-M-CORD-4.1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1319,67 +966,23 @@ rcc.band7.tm1.50PRB.nfapi.conf</code></p>
       
         
           
-            <h1 id="OAI-vRAN-in-MCORD-project"><a href="#OAI-vRAN-in-MCORD-project" class="headerlink" title="OAI vRAN in MCORD project"></a>OAI vRAN in MCORD project</h1><pre><code>NTUST BMW LAB./ Nick
-</code></pre><h2 id="Milestone-and-target"><a href="#Milestone-and-target" class="headerlink" title="Milestone and target"></a>Milestone and target</h2><ul>
-<li><strong>[done]</strong> System Architecture for OAI virtualization</li>
-</ul>
-<hr>
-<p><img src="https://i.imgur.com/Og82xOC.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> Successfully install Cord-in-a-Box (CiaB)</p>
-<ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">Note and record for Cord in a Box porting</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>[done]</strong> OAI vEPC over CiaB <ul>
-<li>XOS service and synchonizer has been developed by <strong>NCTU</strong></li>
-<li>result for porting OAI vEPC (including VHHS VSPGW VMME)</li>
-</ul>
-</li>
-</ul>
-<p>Nova instance observation</p>
-<p><img src="https://i.imgur.com/4IOCGqy.png" alt=""></p>
-<p>Snapshot for vEPC service</p>
-<p><img src="https://i.imgur.com/2S8zDln.png" alt=""></p>
-<hr>
-<ul>
-<li><p><strong>[done]</strong> OAI vRAN over CiaB</p>
-<ul>
-<li>detail :  <ul>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer for OAI BBU</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Service graph</p>
-<p><img src="https://i.imgur.com/hlLLELD.png" alt=""></p>
-<p>Nova instance observation<br><img src="https://i.imgur.com/tkAX7Rv.png" alt=""></p>
-<p>Succefully connect oaibbu to vEPC<br><img src="https://i.imgur.com/s0fhu5G.png" alt=""></p>
-<hr>
-<ul>
-<li><strong>[ongoing]</strong> UE makes phone call over vRAN</li>
-</ul>
-<h2 id="Note-for-more-detail"><a href="#Note-for-more-detail" class="headerlink" title="Note for more detail"></a>Note for more detail</h2><ul>
-<li><a href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario">How to port Cord in a box in M-Cord scenario ver 4.1</a></li>
-<li><a href="/2018/04/17/xos-concept">XOS service on board Concept</a></li>
-<li><a href="/2018/04/17/django">Data Model - Django</a></li>
-<li><a href="/2018/04/17/develop-xos">Note for developing XOS service synchronizer</a></li>
-<li><a href="/2018/04/17/onboard-oai">Onboarding custom service/VNF on M-CORD 4.1</a></li>
-</ul>
-<h2 id="XOS-service-and-automation-scripts-for-deploying-OAI-BBU"><a href="#XOS-service-and-automation-scripts-for-deploying-OAI-BBU" class="headerlink" title="XOS service and automation scripts for deploying OAI BBU"></a>XOS service and automation scripts for deploying OAI BBU</h2><ul>
-<li><p><a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">XOS service of OAI BBU</a></p>
-</li>
-<li><p><a href="https://gitlab.com/NickHoB/oaibbu_script" target="_blank" rel="noopener">OAI base M-Cord scripts</a></p>
-</li>
-</ul>
+          OAI vRAN in MCORD projectNTUST BMW LAB./ Nick
+Milestone and target
+[done] System Architecture for OAI virtualization
 
-          
+
+
+
+
+[done] Successfully install 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/vRAN-project/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1497,75 +1100,16 @@ rcc.band7.tm1.50PRB.nfapi.conf</code></p>
       
         
           
-            <p>In this section, I will record each step that I implemented the custom service <a href="https://github.com/nick133371/oaiBBU" target="_blank" rel="noopener">oaibbu</a> from example service and took <a href="https://github.com/aweimeow/vHSS" target="_blank" rel="noopener">vHHS</a> as an example.</p>
-<h2 id="Synchronizer-Design-Guidelines"><a href="#Synchronizer-Design-Guidelines" class="headerlink" title="Synchronizer Design Guidelines"></a>Synchronizer Design Guidelines</h2><h3 id="Synchronizer-and-data-model"><a href="#Synchronizer-and-data-model" class="headerlink" title="Synchronizer and data model"></a>Synchronizer and data model</h3><ul>
-<li>Synchronizers act as the link between the data model and the functional half of the system.</li>
-<li>the data model contains a clean, abstract and declarative representation of the system</li>
-</ul>
-<p>Earlier releases (3.0 and before) required additional files (mostly Python code) to on-board a service, including a REST API, a TOSCA API, and an Admin GUI. These components are now auto-generated from the models rather than coded by hand.</p>
-<h3 id="CiaB-development-loop"><a href="#CiaB-development-loop" class="headerlink" title="CiaB development loop"></a>CiaB development loop</h3><ul>
-<li>Make changes to your service code and propagate them to your CiaB host</li>
-<li>Teardown the existing XOS installation and clean up OpenStack to remove any leftover instances or networks</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cd cord/build</span><br><span class="line"></span><br><span class="line"># clean environment</span><br><span class="line">make xos-teardown</span><br><span class="line">make clean-openstack </span><br><span class="line">make clean-profile</span><br><span class="line"></span><br><span class="line">#Optional: Teardown ONOS. </span><br><span class="line">#Sometimes we find it helpful to reinstall the onos-cord and onos-fabric containers,</span><br><span class="line">#to ensure that all state is wiped clean from ONOS</span><br><span class="line">make clean-onos</span><br><span class="line"></span><br><span class="line"># build</span><br><span class="line">make -j4 build </span><br><span class="line">make compute-node-refresh</span><br></pre></td></tr></table></figure>
-<ul>
-<li>(Optional) </li>
-<li>Test and verify your changes.</li>
-</ul>
-<h3 id="Create-a-XOS-service-based-on-your-service"><a href="#Create-a-XOS-service-based-on-your-service" class="headerlink" title="Create a XOS service based on your service"></a>Create a XOS service based on your service</h3><p>Synchronizers are processes that run continuously, checking for changes to the Tenant model and applying them to the running Instances. In this case, we’re using TenantWithContainer, which creates a Virtual Machine Instance for us.</p>
-<p>XOS Synchronizers are located in the xos/synchronizers directory in the XOS source tree. It’s customary to name the synchronizer directory with the same name as your service. The example code given below is in the XOS repo at xos/synchronizers/exampleservice.</p>
-<h4 id="Define-a-model-xproto"><a href="#Define-a-model-xproto" class="headerlink" title="Define a model (xproto)"></a>Define a model (xproto)</h4><ul>
-<li>Define a model</li>
-<li>XPROTO is a combination of Google Protocol Buffers and some XOS- specific annotations</li>
-<li>The XPROTO Header, which contains options that are global to the rest of the file</li>
-<li>The Service model, which manages the service as a whole</li>
-<li>The ServiceInstance model, which manages tenant-specific (per-service-instance) state</li>
-</ul>
-<p><code>name</code> specifies a name for your service<br><code>app_label</code> configures the internal xos database application that is attached to these models</p>
-<p>A Service model extends (inherits from) the XOS base <em>Service</em> model. At its head is a set of option declarations such as <code>verbose_name</code>, which specifies a human-readable name for the service model. Then follows a set of field definitions.</p>
-<p><code>oaibbu.xproto</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">option name = &quot;oaiBBU&quot;;</span><br><span class="line">option app_label = &quot;oaibbu&quot;;</span><br><span class="line"></span><br><span class="line">message OAIBBUService (Service)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Virtual Base Band Unit&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message OAIBBUVendor (XOSBase)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Vitrual Base Band Unit Vendor&quot;;</span><br><span class="line"></span><br><span class="line">    required string name = 1 [help_text = &quot;vendor name&quot;, max_length = 32, null = False, db_index = False, blank = False]; </span><br><span class="line">    required manytoone image-&gt;Image:+ = 2 [help_text = &quot;select image for this vendor&quot;, db_index = True, null = False, blank = False];</span><br><span class="line">    required manytoone flavor-&gt;Flavor:+ = 3 [help_text = &quot;select openstack flavor for vendor image&quot;, db_index = True, null = False, blank = False];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message OAIBBUTenant (TenantWithContainer)&#123;</span><br><span class="line">    option verbose_name = &quot;OAI Vitrual Base Band Unit Instance&quot;;</span><br><span class="line"></span><br><span class="line">    optional manytoone oaibbu_vendor-&gt;OAIBBUVendor:vendor_tenants = 1 [help_text = &quot;select vendor of choice, leave blank for slice default&quot;, db_index = True, null = True, blank = True]; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="Define-a-syncrhronizer"><a href="#Define-a-syncrhronizer" class="headerlink" title="Define a syncrhronizer"></a>Define a syncrhronizer</h4><p>The Synchronizer has three parts: </p>
-<ul>
-<li>The synchronizer python program, </li>
-<li>model policies which enact changes on the data model</li>
-<li>a playbook (typically Ansible) that configures the underlying system. The following describes how to construct these.</li>
-</ul>
-<h4 id="model-deps"><a href="#model-deps" class="headerlink" title="model-deps"></a>model-deps</h4><p>Note: Earlier versions included a tool to track model dependencies, but today it is sufficient to create a file named <code>model-deps</code> with the contents: <code>{}</code>.</p>
-<p>=&gt; Create a file named <code>model-deps</code> with the contents: <code>{}</code>.</p>
-<h4 id="synchronizer-python-program"><a href="#synchronizer-python-program" class="headerlink" title="synchronizer python program"></a>synchronizer python program</h4><p>It loads and runs the default <code>xos-synchronizer</code> module in it’s own Docker container.<br>To configure this module, create a file named <code>exampleservice_config.yaml</code>, which specifies various configuration and logging options:</p>
-<p> <code>exampleservice-synchronizer.py</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Runs the standard XOS synchronizer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> xosconfig <span class="keyword">import</span> Config</span><br><span class="line"></span><br><span class="line"><span class="comment"># your custom config should be placed here</span></span><br><span class="line">config_file = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + <span class="string">'/exampleservice_config.yaml'</span>)</span><br><span class="line">Config.init(config_file, <span class="string">'synchronizer-config-schema.yaml'</span>)</span><br><span class="line"></span><br><span class="line">synchronizer_path = os.path.join(os.path.dirname(</span><br><span class="line">    os.path.realpath(__file__)), <span class="string">"../../synchronizers/new_base"</span>)</span><br><span class="line">sys.path.append(synchronizer_path)</span><br><span class="line">mod = importlib.import_module(<span class="string">"xos-synchronizer"</span>)</span><br><span class="line">mod.main()</span><br></pre></td></tr></table></figure>
-<p><code>oaibbu-synchronizer.py</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This imports and runs ../../xos-observer.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> xosconfig <span class="keyword">import</span> Config</span><br><span class="line">config_file = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + <span class="string">'/oaibbu_config.yaml'</span>)</span><br><span class="line"></span><br><span class="line">Config.init(config_file, <span class="string">'synchronizer-config-schema.yaml'</span>)</span><br><span class="line">observer_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), <span class="string">"../../synchronizers/new_base"</span>)</span><br><span class="line"></span><br><span class="line">sys.path.append(observer_path)</span><br><span class="line">mod = importlib.import_module(<span class="string">"xos-synchronizer"</span>)</span><br><span class="line">mod.main()</span><br></pre></td></tr></table></figure></p>
-<p>config yaml:</p>
-<ul>
-<li>list the path of your synchronizer component</li>
-</ul>
-<p>exampleservice_config.yaml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">name: exampleservice</span><br><span class="line">accessor:</span><br><span class="line">  username: xosadmin@opencord.org</span><br><span class="line">  password: &quot;@/opt/xos/services/exampleservice/credentials/xosadmin@opencord.org&quot;</span><br><span class="line">required_models:</span><br><span class="line">  - ExampleService</span><br><span class="line">  - ExampleServiceInstance</span><br><span class="line">  - ServiceDependency</span><br><span class="line">  - ServiceMonitoringAgentInfo</span><br><span class="line">dependency_graph: &quot;/opt/xos/synchronizers/exampleservice/model-deps&quot;</span><br><span class="line">steps_dir: &quot;/opt/xos/synchronizers/exampleservice/steps&quot;</span><br><span class="line">sys_dir: &quot;/opt/xos/synchronizers/exampleservice/sys&quot;</span><br><span class="line">model_policies_dir: &quot;/opt/xos/synchronizers/exampleservice/model_policies&quot;</span><br><span class="line">models_dir: &quot;/opt/xos/synchronizers/exampleservice/models&quot;</span><br></pre></td></tr></table></figure></p>
-<p>oaibbu_config.yaml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name: oaibbu-synchronizer</span><br><span class="line">accessor:</span><br><span class="line">  username: xosadmin@opencord.org</span><br><span class="line">  password: &quot;@/opt/xos/services/oaibbu/credentials/xosadmin@opencord.org&quot;</span><br><span class="line">dependency_graph: &quot;/opt/xos/synchronizers/oaibbu/model-deps&quot;</span><br><span class="line">steps_dir: &quot;/opt/xos/synchronizers/oaibbu/steps&quot;</span><br><span class="line">sys_dir: &quot;/opt/xos/synchronizers/oaibbu/sys&quot;</span><br><span class="line">model_policies_dir: &quot;/opt/xos/synchronizers/oaibbu/model_policies&quot;</span><br></pre></td></tr></table></figure></p>
-<p>/steps/sync_oaibbutenant.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q, F</span><br><span class="line"><span class="comment"># Bring in some basic prerequities, Q to perform complex queries, and F to get the value of the model field. Also include the models created earlier, and SyncInstanceUsingAnsible which will run the Ansible playbook in the Instance VM.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#from services.oaibbu.models import OAIBBUService, OAIBBUTenant</span></span><br><span class="line"><span class="keyword">from</span> synchronizers.new_base.modelaccessor <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> synchronizers.new_base.SyncInstanceUsingAnsible <span class="keyword">import</span> SyncInstanceUsingAnsible</span><br><span class="line"></span><br><span class="line">parentdir = os.path.join(os.path.dirname(__file__), <span class="string">".."</span>)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, parentdir)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SyncOAIBBUTenant</span><span class="params">(SyncInstanceUsingAnsible)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Used by XOSObserver : sync_steps to determine dependencies.</span></span><br><span class="line">    provides = [OAIBBUTenant]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The Tenant that is synchronized.</span></span><br><span class="line">    observes = OAIBBUTenant</span><br><span class="line"></span><br><span class="line">    requested_interval = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Name of the ansible playbook to run.</span></span><br><span class="line">    template_name = <span class="string">"oaibbutenant_playbook.yaml"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Path to the SSH key used by Ansible.</span></span><br><span class="line">    service_key_name = <span class="string">"/opt/xos/configurations/mcord/mcord_private_key"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        super(SyncOAIBBUTenant, self).__init__(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_network_id</span><span class="params">(self, network_name)</span>:</span></span><br><span class="line">        network = Network.objects.filter(name=network_name).first()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> network.id</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_instance_object</span><span class="params">(self, instance_id)</span>:</span></span><br><span class="line">        instance = Instance.objects.filter(id=instance_id).first()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_information</span><span class="params">(self, o)</span>:</span></span><br><span class="line">        fields = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># not sure if this part need to modify, need to check further network setting</span></span><br><span class="line"></span><br><span class="line">        collect_network = [</span><br><span class="line">           &#123;<span class="string">'name'</span>: <span class="string">'HSS_PRIVATE_IP'</span>, <span class="string">'net_name'</span>: <span class="string">'vhss_network'</span>&#125;</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line">        instance = self.get_instance_object(o.instance_id)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> collect_network:</span><br><span class="line">            network_id = self.get_network_id(data[<span class="string">'net_name'</span>])</span><br><span class="line">            port = filter(<span class="keyword">lambda</span> x: x.network_id == network_id, instance.ports.all())[<span class="number">0</span>]</span><br><span class="line">            fields[data[<span class="string">'name'</span>]] = port.ip</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fields</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_extra_attributes</span><span class="params">(self, o)</span>:</span></span><br><span class="line">        fields = self.get_information(o)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> fields</span><br></pre></td></tr></table></figure>
-<h3 id="files-in-Synchronizer"><a href="#files-in-Synchronizer" class="headerlink" title="files in Synchronizer"></a>files in Synchronizer</h3><p><code>oaibbu.xproto</code></p>
-<ul>
-<li>Define a model</li>
-<li>XPROTO is a combination of Google Protocol Buffers and some XOS- specific annotations</li>
-<li>The XPROTO Header, which contains options that are global to the rest of the file</li>
-<li>The Service model, which manages the service as a whole</li>
-<li>The ServiceInstance model, which manages tenant-specific (per-service-instance) state</li>
-</ul>
-<p><code>oaibbu-synchonizer.py</code></p>
-<ul>
-<li>replace config yaml file</li>
-</ul>
-<p><code>oaibbu_config.yaml</code></p>
-<ul>
-<li>Modify synchonizer path</li>
-</ul>
-<p><code>sync_oaibbutenant.py</code></p>
-<ul>
-<li>setting of the tenant information</li>
-</ul>
-
-          
+          In this section, I will record each step that I implemented the custom service oaibbu from example service and took vHHS as an example.
+Synchronizer D
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/develop-xos/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1683,39 +1227,18 @@ rcc.band7.tm1.50PRB.nfapi.conf</code></p>
       
         
           
-            <pre><code>Nick Ho 2018 3
+          Nick Ho 2018 3
 nick133371@gmail.com
-</code></pre><h2 id="Core-Model"><a href="#Core-Model" class="headerlink" title="Core Model"></a>Core Model</h2><p>Instance = VM | container | container-in-VM<br>Slice = Instances + Networks<br>Service = Controller + slices</p>
-<p>Service Graph = Tenant Root + services + Tenants</p>
-<p>For example :<br>subscriber -&gt; vOLT -&gt; vSG -&gt; vRouter</p>
-<h3 id="Core-Model-Details"><a href="#Core-Model-Details" class="headerlink" title="Core Model Details"></a>Core Model Details</h3><ul>
-<li>Intance<ul>
-<li>ID</li>
-<li>Name</li>
-<li>Isolation</li>
-<li>Flavor</li>
-<li>Image</li>
-<li>Node</li>
-<li>Port</li>
-</ul>
-</li>
-<li>Isolation<ul>
-<li>VM | container | container-in-VM</li>
-</ul>
-</li>
-<li>Network<ul>
-<li>template<ul>
-<li>visibility</li>
-<li>Translation</li>
-<li>etc</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Port</li>
-</ul>
-
-          
+Core ModelInstance = VM | container | container-in-VMSlice = Instances + NetworksService = Controller + slices
+Ser
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/django/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1833,150 +1356,20 @@ nick133371@gmail.com
       
         
           
-            <pre><code>Nick Ho 2018 3
+          Nick Ho 2018 3
 nick133371@gmail.com
-</code></pre><h2 id="some-useful-guide"><a href="#some-useful-guide" class="headerlink" title="some useful guide"></a>some useful guide</h2><p><a href="https://guide.xosproject.org/devguide/exampleservice" target="_blank" rel="noopener">step by step ExampleService Tutorial</a></p>
-<p><a href="https://opencord.org/collateral/" target="_blank" rel="noopener">collateral</a></p>
-<p><a href="https://drive.google.com/drive/u/0/folders/0B_aHVidnFIbAc0Q4RmxSVnpHSDg" target="_blank" rel="noopener">public note</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">github: open-cloud/xos/</span><br><span class="line"></span><br><span class="line">xos/configurations/cord-pod/README-Tutorial.md</span><br></pre></td></tr></table></figure>
-<h2 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h2><p>Django</p>
-<p>Rest API</p>
-<p>Ansible</p>
-<h2 id="Lifecycle-Management"><a href="#Lifecycle-Management" class="headerlink" title="Lifecycle Management"></a>Lifecycle Management</h2><h3 id="Design-Time-Framework"><a href="#Design-Time-Framework" class="headerlink" title="Design Time Framework"></a>Design Time Framework</h3><p>Organized as a graph of Multi-Tenant Cloud Services</p>
-<p>On-boarding Services is a Dstinct step</p>
-<ul>
-<li>Service Developer provides Service Elements</li>
-<li>Operator Configures Service Graph</li>
-</ul>
-<h3 id="Runtime-framework"><a href="#Runtime-framework" class="headerlink" title="Runtime framework"></a>Runtime framework</h3><ul>
-<li>Interface to Provision and Scale Services</li>
-<li>Interface to Instantiate adn Control Service Instances</li>
-<li>Interface to Monitor Service Performance &amp; Behavior</li>
-</ul>
-<h2 id="Cord-Software-Architecture"><a href="#Cord-Software-Architecture" class="headerlink" title="Cord Software Architecture"></a>Cord Software Architecture</h2><p><img src="https://i.imgur.com/dlW1obO.png" alt=""></p>
-<h3 id="Key-Takeaway"><a href="#Key-Takeaway" class="headerlink" title="Key Takeaway"></a>Key Takeaway</h3><ul>
-<li>Service controllers consolidate all configuration and control</li>
-<li>CORD Controller mediates all inter-service dependencies</li>
-<li>CORD Controller provides a uniform interface to set of Service Controller</li>
-</ul>
-<h2 id="CORD-controller"><a href="#CORD-controller" class="headerlink" title="CORD controller"></a>CORD controller</h2><p>Contain the following components, running on the head node.</p>
-<p><img src="https://i.imgur.com/NknUYAw.png" alt=""></p>
-<ul>
-<li>XOS DB container<ul>
-<li>contains the state of the dbn ata model</li>
-</ul>
-</li>
-<li>XOS container<ul>
-<li>Rest API (North-bound application enter, can do also copnfigure) </li>
-<li>Admin GUI (Operator)</li>
-<li>TOSCA (Config)</li>
-<li>Data model (Django)</li>
-</ul>
-</li>
-<li>per synchronizer container per service<br>activating that state to affect the backend system.<ul>
-<li>Openstack synchronizer</li>
-<li>ONOS synchronizer</li>
-<li>VNF synchronizer </li>
-</ul>
-</li>
-<li>Openstack</li>
-<li>ONOS</li>
-<li>VNF (Image)</li>
-</ul>
-<p><img src="https://i.imgur.com/sS10F5A.png" alt=""></p>
-<p>Service Elements</p>
-<ul>
-<li>REST Extension</li>
-<li>GUI Extension</li>
-<li>Tosca Extension</li>
-<li>Model Definition</li>
-<li>Synchronizer</li>
-</ul>
-<p>all the above implement a service controller</p>
-<ul>
-<li>VNF (image)</li>
-</ul>
-<h2 id="Synchronizer-and-State-Management"><a href="#Synchronizer-and-State-Management" class="headerlink" title="Synchronizer and State Management"></a>Synchronizer and State Management</h2><p>|| PHASE 1 - Django Data Model (REST API)<br>||<br>|| (1) change notification<br>||<br>|| PHASE 2 - Synchronizer Framework (Activates data model)<br>||<br>|| (2) sync request<br>||<br>|| PHASE 3 - Sync plugin + Ansible Template<br>||<br>|| (3) generate recipe<br>||<br>|| PHASE 4 - Ansible<br>||<br>|| (4) operate on resources<br>||<br>|| PHASE 5 Backend Resources (Operational State)<br>V</p>
-<h2 id="Service-Elements"><a href="#Service-Elements" class="headerlink" title="Service Elements"></a><strong>Service Elements</strong></h2><table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Source code for service X</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Django Model</td>
-<td>xos/services/X/model.py</td>
-</tr>
-<tr>
-<td>synchronizer</td>
-<td>xos/synchronizers/X/X-synchronizer.py</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/synchronizers/X/X_config</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/synchronizers/X/steps/sync_X.py</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/synchronizers/X/steps/X_playbook.yml</td>
-</tr>
-<tr>
-<td>Admin GUI</td>
-<td>xos/services/X/admin.py</td>
-</tr>
-<tr>
-<td>REST API</td>
-<td>xos/api/service/X.py</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/api/tenant/Xtenant.py</td>
-</tr>
-<tr>
-<td>TOSCA MODEL</td>
-<td>xos/api/service/X.py</td>
-</tr>
-<tr>
-<td>Test/Documentation</td>
-<td>xos/tests/api/hooks.py</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/tests/api/source/service/X.md</td>
-</tr>
-<tr>
-<td></td>
-<td>xos/tests/api/source/service/Xtenant.md</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Onboard-a-service"><a href="#Onboard-a-service" class="headerlink" title="Onboard a service"></a>Onboard a service</h2><ul>
-<li>Upload Add files to github repository</li>
-<li>Register<ul>
-<li>Edit xos/setting.py</li>
-<li>Edit tools/xos-manage</li>
-</ul>
-</li>
-<li>Configure<ul>
-<li>cd xos/configurations/cord-pod</li>
-<li>Edit TOSCA (*.yaml) files</li>
-</ul>
-</li>
-<li>Build make containers</li>
-<li>Instantiate <ul>
-<li>Create Service via admin GUI</li>
-<li>Bind Service to slice via Admin GUI</li>
-<li>Bind slice to VNF image</li>
-</ul>
-</li>
-</ul>
-
-          
+some useful guidestep by step ExampleService Tutorial
+collateral
+public note
+123github: open-cloud/xos/xos/configu
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/xos-concept/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2094,44 +1487,18 @@ nick133371@gmail.com
       
         
           
-            <pre><code>Nick Ho 2018 3
+          Nick Ho 2018 3
 nick133371@gmail.com
-</code></pre><hr>
-<h2 id="Server-Requirement"><a href="#Server-Requirement" class="headerlink" title="Server Requirement"></a>Server Requirement</h2><p>Before starting the Cord-in-a-Box installation, be sure that your server fit the following requirement</p>
-<ul>
-<li>64-bit AMD64/x86-64 server</li>
-<li>48 GB+ RAM</li>
-<li>12+ CPU cores</li>
-<li>1 TB+ disk</li>
-<li>Access to internet</li>
-<li>ubuntu 16.04.3 with fresh update</li>
-<li>sudo less</li>
-</ul>
-<h2 id="Sudo-less"><a href="#Sudo-less" class="headerlink" title="Sudo less"></a>Sudo less</h2><p>use <strong>sudo visudo</strong> to edit the following configuration</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line"> </span><br><span class="line"># Members of the admin group may gain root privileges</span><br><span class="line">%admin ALL=(ALL) ALL</span><br><span class="line"> </span><br><span class="line"># Allow members of group sudo to execute any command</span><br><span class="line">%sudo   ALL=(ALL:ALL) ALL</span><br><span class="line"> </span><br><span class="line">ubuntu  ALL=(ALL) NOPASSWD:ALL</span><br><span class="line"> </span><br><span class="line"># See sudoers(5) for more information on &quot;#include&quot; directives:</span><br><span class="line"> </span><br><span class="line">#includedir /etc/sudoers.d</span><br></pre></td></tr></table></figure>
-<h2 id="Install-M-CORD"><a href="#Install-M-CORD" class="headerlink" title="Install M-CORD"></a>Install M-CORD</h2><p>Download source code from cord github, and modify the property of the bash file.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o ~/cord-bootstrap.sh https://raw.githubusercontent.com/opencord/cord/cord-4.1/scripts/cord-bootstrap.sh</span><br><span class="line">chmod +x cord-bootstrap.sh</span><br></pre></td></tr></table></figure>
-<p>Install the basic CORD configuration and install vagrant.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./cord-bootstrap.sh -v</span><br></pre></td></tr></table></figure>
-<p>If you have error when vagrant try to download ubuntu image, try to add following code into the bash file.<br>Then, execute ./cord-bootstrap.sh -v again.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export VAGRANT\_SERVER\_URL=&quot;https://vagrantcloud.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p>If you are having trouble when building CORD at the stage “lxc finished” in case of container connectivity problem.<br>You can do the following modification.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/cord/build/maas/roles/maas/tasks/config-maas.yml</span><br></pre></td></tr></table></figure></p>
-<p>try to add dnssec_validation: ‘no’ into the file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># ~/cord/build/maas/roles/maas/tasks/config-maas.yml</span><br><span class="line">- name: Ensure Upstream DNS Server </span><br><span class="line">  maas:</span><br><span class="line">    key: &apos;&#123;&#123;apikey.stdout&#125;&#125;&apos;</span><br><span class="line">    maas: &apos;http://&#123;&#123;mgmt_ip_address.stdout&#125;&#125;/MAAS/api/1.0&apos;</span><br><span class="line">    upstream_dns: &apos;&#123;&#123;maas.upstream_dns&#125;&#125;&apos;</span><br><span class="line">    dnssec_valiation: &apos;no&apos;</span><br><span class="line">    state: present</span><br></pre></td></tr></table></figure></p>
-<p>Then, set the cord scenario.<br>In cord4.1, you might face some problem if directly build M-CORD.<br>So we can build rcord first, and change cord profile into M-CORD or whatever CORD.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/cord/build</span><br><span class="line">make PODCONFIG=rcord-virtual.yml   config</span><br><span class="line">make -j4 build |   &amp;tee ~/build.out</span><br></pre></td></tr></table></figure></p>
-<p>After successfully building the rcord, and then change cord profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">\# run after shutdown or bring up newly written service </span><br><span class="line">make xos-teardown; make clean-openstack; make clean-profile; \ </span><br><span class="line">cd genconfig/ &amp;&amp; rm -rf config.* cord_* inventory.ini; \ </span><br><span class="line">cd ../ &amp;&amp; make config PODCONFIG=mcord-ng40-virtual.yml; \ </span><br><span class="line"></span><br><span class="line"># make PODCONFIG=mcord-oai-virtual.yml config</span><br><span class="line"></span><br><span class="line">make -j4 build; make compute-node-refresh \</span><br><span class="line"></span><br><span class="line"># check for xos password </span><br><span class="line">ssh head1 -qt &quot;cat /opt/credentials/xosadmin@opencord.org&quot;</span><br></pre></td></tr></table></figure></p>
-<p>And you can get into the web UI from {your_ip}:8080/xos<br>account :<a href="mailto:xosadmin@opencord.org" target="_blank" rel="noopener">xosadmin@opencord.org</a><br>password has checked by the above command<br>Then you will see the following service graph.</p>
-<p><img src="https://i.imgur.com/D6STEAB.png" alt=""></p>
-<h2 id="Having-trouble-with-no-GUI-after-sucessfully-deployed"><a href="#Having-trouble-with-no-GUI-after-sucessfully-deployed" class="headerlink" title="Having trouble with no GUI after sucessfully deployed?"></a>Having trouble with no GUI after sucessfully deployed?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps ax|grep 8080</span><br></pre></td></tr></table></figure>
-<p>copy the line related to ssh it will like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9762 ?        S      0:00 ssh -o User=vagrant -o Port=22 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o PasswordAuthentication=no -o ForwardX11=no -o IdentityFile=&quot;/home/cord/cord/build/scenarios/cord/.vagrant/machines/head1/libvirt/private_key&quot; -L *:8080:192.168.121.157:80 -N 192.168.121.157</span><br></pre></td></tr></table></figure>
-<p>and then kill that process</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -9 &lt;&lt;process ID&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p>open a new terminal and paste the command you have copied</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o User=vagrant -o Port=22 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o PasswordAuthentication=no -o ForwardX11=no -o IdentityFile=&quot;/home/cord/cord/build/scenarios/cord/.vagrant/machines/head1/libvirt/private_key&quot; -L *:8080:192.168.121.157:80 -N 192.168.121.157</span><br></pre></td></tr></table></figure>
-<p>And then Ctrl+z</p>
-<h2 id="Clean-environment"><a href="#Clean-environment" class="headerlink" title="Clean environment"></a>Clean environment</h2><p>If you want to re-install CORD or you want to clean all the configuration of M-CORD, try the following script.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd cord/build</span><br><span class="line">make clean-all</span><br></pre></td></tr></table></figure>
-<h2 id="General-OAI-service"><a href="#General-OAI-service" class="headerlink" title="General OAI service"></a>General OAI service</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vagrant@head1:~$ source /opt/cord_profile/admin-openrc.sh</span><br><span class="line">vagrant@head1:~$ nova list --all-tenants</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| ID                                   | Name              | Status | Task State | Power State | Networks                                                       |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br><span class="line">| 04765e74-26f8-426d-b37a-67f425faf4ab | mysite_oaispgw1-2 | ACTIVE | -          | Running     | management=172.27.0.3; public=10.8.1.2; vspgw_network=10.0.8.2 |</span><br><span class="line">| 1cf41f60-5d4a-4f02-9500-9bfabce8c05c | mysite_oaispgw1-3 | ACTIVE | -          | Running     | management=172.27.0.4; public=10.8.1.3; vspgw_network=10.0.8.3 |</span><br><span class="line">| d9177408-63be-450d-b9a6-16a3c1e03d5e | mysite_vhss1-1    | ACTIVE | -          | Running     | management=172.27.0.2; vhss_network=10.0.7.2                   |</span><br><span class="line">| 619d3f85-90f1-4218-8764-d92efcada553 | mysite_vmme1-4    | ACTIVE | -          | Running     | management=172.27.0.5; vmme_network=10.0.6.2                   |</span><br><span class="line">+--------------------------------------+-------------------+--------+------------+-------------+----------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
-          
+
+Server RequirementBefore starting the Cord-in-a-Box installation, be sure that your server fit the following requ
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/How-to-port-Cord-in-a-box-in-M-Cord-scenario/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
