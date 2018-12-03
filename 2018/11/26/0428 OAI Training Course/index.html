@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OAI," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Slides for presentation : here Set up OAI eNB and EPC in a single Virtual MachineeNB and EPC are in a single machine (same host). Note: the procedure will be almost same if you use physical mahine!  =">
+<meta name="keywords" content="OAI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OAI all-in-one deployment">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/0428 OAI Training Course/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="Slides for presentation : here Set up OAI eNB and EPC in a single Virtual MachineeNB and EPC are in a single machine (same host). Note: the procedure will be almost same if you use physical mahine!  =">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/6jytx21.png">
+<meta property="og:image" content="https://i.imgur.com/5iGrKDc.png">
+<meta property="og:image" content="https://i.imgur.com/27XvY9H.png">
+<meta property="og:image" content="https://i.imgur.com/uBsKWkE.png">
+<meta property="og:image" content="https://i.imgur.com/3sCgeJJ.png">
+<meta property="og:image" content="https://i.imgur.com/ah4KZHX.png">
+<meta property="og:image" content="https://i.imgur.com/2GTBfYh.png">
+<meta property="og:image" content="https://i.imgur.com/2HSubwh.png">
+<meta property="og:image" content="https://i.imgur.com/2ULZkpO.png">
+<meta property="og:updated_time" content="2018-12-03T07:36:14.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OAI all-in-one deployment">
+<meta name="twitter:description" content="Slides for presentation : here Set up OAI eNB and EPC in a single Virtual MachineeNB and EPC are in a single machine (same host). Note: the procedure will be almost same if you use physical mahine!  =">
+<meta name="twitter:image" content="https://i.imgur.com/6jytx21.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/0428 OAI Training Course/"/>
+
+
+
+
+
+  <title>OAI all-in-one deployment | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/SDN/OAI/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/0428 OAI Training Course/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OAI all-in-one deployment</h1>
+        
+
+        <div class="post-meta">
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>top</font>
+            <span class="post-meta-divider">|</span>
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T16:50:16+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Slides for presentation : <a href="http://140.118.123.114/for_New/OAI_Training_0428.pdf" target="_blank" rel="noopener">here</a></p>
+<h2 id="Set-up-OAI-eNB-and-EPC-in-a-single-Virtual-Machine"><a href="#Set-up-OAI-eNB-and-EPC-in-a-single-Virtual-Machine" class="headerlink" title="Set up OAI eNB and EPC in a single Virtual Machine"></a>Set up OAI eNB and EPC in a single Virtual Machine</h2><p>eNB and EPC are in a single machine (same host).</p>
+<p>Note: the procedure will be almost same if you use physical mahine!</p>
+<hr>
+<p>==Connection scenario:==</p>
+<p><img src="https://i.imgur.com/6jytx21.png" alt=""></p>
+<hr>
+<p>The benefit of this deployment:</p>
+<ul>
+<li>Easy to setup the develop environment for eNB protocol test.</li>
+<li>This deployment can show the connection between instance with a very easy way</li>
+<li>Really bring internet via wireless to UE!</li>
+</ul>
+<p>Hardware requirements:</p>
+<ul>
+<li>Intel based CPU with 4 cores at 2.7GHz or above</li>
+<li>8G RAM or above</li>
+<li>USB3.0</li>
+<li>Ubuntu 14.04</li>
+</ul>
+<h3 id="Install-Virtual-Machine"><a href="#Install-Virtual-Machine" class="headerlink" title="Install Virtual Machine"></a>Install Virtual Machine</h3><p>I prefer <a href="https://my.vmware.com/en/web/vmware/free#desktop_end_user_computing/vmware_workstation_player/12_0" target="_blank" rel="noopener">VMware</a> </p>
+<p><a href="http://ubuntu.cs.nctu.edu.tw/ubuntu-cd/14.04.5/ubuntu-14.04.5-desktop-amd64.iso" target="_blank" rel="noopener">Ubuntu img for 14.04</a></p>
+<p>==Create a New virtual Machine==</p>
+<p><img src="https://i.imgur.com/5iGrKDc.png" alt=""></p>
+<p>==Select the image that we have downloaded==</p>
+<p><img src="https://i.imgur.com/27XvY9H.png" alt=""></p>
+<p>==Enter the hostname and user name : oai==</p>
+<p><img src="https://i.imgur.com/uBsKWkE.png" alt=""></p>
+<p>==Set whatever you want==</p>
+<p><img src="https://i.imgur.com/3sCgeJJ.png" alt=""></p>
+<p>==Hardware setting==</p>
+<p><img src="https://i.imgur.com/ah4KZHX.png" alt=""></p>
+<p><img src="https://i.imgur.com/2GTBfYh.png" alt=""></p>
+<p><img src="https://i.imgur.com/2HSubwh.png" alt=""></p>
+<p>Then start the installation, after the installation we can get into next step.</p>
+<h3 id="OAI-environment-set-up-and-installation"><a href="#OAI-environment-set-up-and-installation" class="headerlink" title="OAI environment set up and installation"></a>OAI environment set up and installation</h3><h4 id="Environment-low-latency-kernel-setup"><a href="#Environment-low-latency-kernel-setup" class="headerlink" title="Environment / low-latency kernel setup"></a>Environment / low-latency kernel setup</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> always do this when you have a new system</span><br><span class="line">oai@ubuntu:~$ sudo apt-get update</span><br><span class="line"><span class="meta">#</span> if you don't want to use vim, you can use gedit instead of the following edit command</span><br><span class="line">oai@ubuntu:~$ sudo apt-get install vim</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> change hostname</span><br><span class="line">oai@ubuntu:~$ sudo vim /etc/hostname </span><br><span class="line">replace ubuntu to oai</span><br><span class="line">oai@ubuntu:~$ sudo vim /etc/hosts</span><br><span class="line">replace ubuntu to oai.openair4G.eur oai</span><br><span class="line"></span><br><span class="line">then reboot machine, open terminal you shall see</span><br><span class="line">oai@oai:~$ </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> install git</span><br><span class="line">oai@oai:~$ sudo apt-get install git -y</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> clone the eNB/UE source code</span><br><span class="line">oai@oai:~$ git clone https://gitlab.eurecom.fr/oai/openairinterface5g.git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> clone the EPC source code</span><br><span class="line">oai@oai:~$ git clone https://github.com/OPENAIRINTERFACE/openair-cn.git</span><br><span class="line">oai@oai:~$ cd openair-cn/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> swtich the branch to the one that we gonna use</span><br><span class="line">oai@oai:~/openair-cn$ git checkout v0.3.2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Install low-lentency kernel</span><br><span class="line">oai@oai:~$ sudo apt-get install linux-lowlatency-lts-vivid -y</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Set cpu scaling</span><br><span class="line">oai@oai:~$ sudo apt-get install cpufrequtils</span><br><span class="line">oai@oai:~$ sudo vim /etc/default/cpufrequtils</span><br><span class="line">add GOVERNOR="performance" to this file</span><br><span class="line"></span><br><span class="line">oai@oai:~$ sudo update-rc.d ondemand disable</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> remove the kernel we won't used</span><br><span class="line">oai@oai:~$ dpkg --get-selections | grep linux-image</span><br><span class="line">linux-image-3.19.0-80-lowlatency		install</span><br><span class="line">linux-image-4.4.0-31-generic			install</span><br><span class="line">linux-image-extra-4.4.0-31-generic		install</span><br><span class="line">linux-image-generic-lts-xenial			install</span><br><span class="line">linux-image-lowlatency-lts-vivid		install</span><br><span class="line"></span><br><span class="line">oai@oai:~$ sudo apt-get purge linux-image-4.4.0-31-generic linux-image-extra-4.4.0-31-generic linux-image-generic-lts-xenial</span><br><span class="line"></span><br><span class="line">oai@oai:~$ sudo update-grub2</span><br><span class="line"></span><br><span class="line">reboot!</span><br></pre></td></tr></table></figure>
+<p>Fine, we can get into the last step!</p>
+<p>check uname -a first, you will have</p>
+<p><img src="https://i.imgur.com/2ULZkpO.png" alt=""></p>
+<p>:::info<br>If you can’t do the copy and paste from host to guest, try the following command.<br>:::</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install open-vm-tools-desktop</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h4 id="Openair-CN-EPC-installation"><a href="#Openair-CN-EPC-installation" class="headerlink" title="Openair-CN (EPC) installation"></a>Openair-CN (EPC) installation</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Enter the script of epc installation</span><br><span class="line">oai@oai:~$ cd openair-cn/SCRIPTS/</span><br><span class="line"><span class="meta">#</span> Install the package which is needed from HSS</span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./build_hss -i</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Set MySQL password to ==<strong>linux</strong>==</li>
+<li>Choose apache</li>
+<li>Set phpmyadmin password to ==<strong>linux</strong>==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Install the package which is needed from epc (including MME and SPGW)</span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./build_epc -i</span><br></pre></td></tr></table></figure>
+<h4 id="Openairinterface-eNB-installation"><a href="#Openairinterface-eNB-installation" class="headerlink" title="Openairinterface eNB installation"></a>Openairinterface eNB installation</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oai@oai:~/openair-cn/SCRIPTS$ cd ~/openairinterface5g/cmake_targets/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Install the package which is needed from eNB, including UHD driver</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets$ sudo ./build_oai -I --eNB -x --install-system-files -w USRP</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Note if you do any modification related to source code, this compiling script should run to adapt your modification</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets$ sudo ./build_oai -w USRP -x -c --eNB</span><br></pre></td></tr></table></figure>
+<h4 id="Configuration-Setting-for-connect-eNB-to-EPC"><a href="#Configuration-Setting-for-connect-eNB-to-EPC" class="headerlink" title="Configuration Setting for connect eNB to EPC"></a>Configuration Setting for connect eNB to EPC</h4><p>eNB configuration<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Copy the configruation files we will use for eNB</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets$ cd ~/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF/</span><br><span class="line">oai@oai:~/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF$ cp enb.band7.tm1.50PRB.usrpb210.conf ~/</span><br><span class="line"></span><br><span class="line">oai@oai:~/openairinterface5g/targets/PROJECTS/GENERIC-LTE-EPC/CONF$ cd </span><br><span class="line"><span class="meta">#</span> Modify eNB configuration</span><br><span class="line">oai@oai:~$ vim enb.band7.tm1.50PRB.usrpb210.conf</span><br></pre></td></tr></table></figure></p>
+<p>Edit the following part<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">~</span><br><span class="line">    ////////// MME parameters:</span><br><span class="line">    mme_ip_address      = ( &#123; ipv4       = "192.170.0.1";</span><br><span class="line">                              ipv6       = "192:168:30::17";</span><br><span class="line">                              active     = "yes";</span><br><span class="line">                              preference = "ipv4";</span><br><span class="line">                            &#125;</span><br><span class="line">                          );</span><br><span class="line"></span><br><span class="line">    NETWORK_INTERFACES :</span><br><span class="line">    &#123;</span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1_MME            = "eth0:3";</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1_MME              = "192.170.0.2/24";</span><br><span class="line"></span><br><span class="line">        ENB_INTERFACE_NAME_FOR_S1U               = "eth0:4";</span><br><span class="line">        ENB_IPV4_ADDRESS_FOR_S1U                 = "192.170.1.2/24";</span><br><span class="line">        ENB_PORT_FOR_S1U                         = 2152; # Spec 2152</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">~</span><br></pre></td></tr></table></figure></p>
+<p>Record your eth0 ip address<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">oai@oai:~$ ifconfig</span><br><span class="line">eth0      Link encap:Ethernet  HWaddr 00:0c:29:95:8e:c2  </span><br><span class="line">          inet addr:192.168.239.128  Bcast:192.168.239.255  Mask:255.255.255.0</span><br><span class="line">          inet6 addr: fe80::20c:29ff:fe95:8ec2/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:400004 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:117545 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:600609444 (600.6 MB)  TX bytes:7270652 (7.2 MB)</span><br><span class="line"></span><br><span class="line">lo        Link encap:Local Loopback  </span><br><span class="line">          inet addr:127.0.0.1  Mask:255.0.0.0</span><br><span class="line">          inet6 addr: ::1/128 Scope:Host</span><br><span class="line">          UP LOOPBACK RUNNING  MTU:65536  Metric:1</span><br><span class="line">          RX packets:651 errors:0 dropped:0 overruns:0 frame:0</span><br><span class="line">          TX packets:651 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:0 </span><br><span class="line">          RX bytes:72652 (72.6 KB)  TX bytes:72652 (72.6 KB)</span><br></pre></td></tr></table></figure></p>
+<p>EPC configuration<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oai@oai:~$ cd openair-cn/BUILD/EPC/</span><br><span class="line">oai@oai:~/openair-cn/BUILD/EPC$ vim epc.conf.in</span><br></pre></td></tr></table></figure></p>
+<p>Modify the following part:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">~</span><br><span class="line">    REALM     = &quot;openair4G.eur&quot;;          # DO NOT CHANGE</span><br><span class="line">~</span><br><span class="line">    S6A :</span><br><span class="line">    &#123;</span><br><span class="line">        S6A_CONF  = &quot;/usr/lib/../etc/freeDiameter/mme_fd.conf&quot;;# DO NOT CHANGE</span><br><span class="line">        HSS_HOSTNAME = &quot;oai&quot;;                                  # DO NOT CHANGE</span><br><span class="line">    &#125;;</span><br><span class="line">~</span><br><span class="line">    TAI_LIST = (</span><br><span class="line">         &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;1&quot;; &#125;,                                  # YOUR TAI CONFIG HERE</span><br><span class="line">         &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;2&quot;; &#125;,                                  # YOUR TAI CONFIG HERE</span><br><span class="line">         &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;3&quot;; &#125;,                                  # YOUR TAI CONFIG HERE</span><br><span class="line">         &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;4&quot;; &#125;,                                  # YOUR TAI CONFIG HERE</span><br><span class="line">         &#123;MCC=&quot;208&quot; ; MNC=&quot;93&quot;;  TAC = &quot;5&quot;; &#125;                                   # YOUR TAI CONFIG HERE</span><br><span class="line">    );</span><br><span class="line">~</span><br><span class="line">    LOGGING :</span><br><span class="line">    &#123;</span><br><span class="line">        # OUTPUT choice in &#123; &quot;CONSOLE&quot;, &quot;`path to file`&quot;, &quot;`IPv4@`:`TCP port num`&quot;&#125; </span><br><span class="line">        # `path to file` must start with &apos;.&apos; or &apos;/&apos;</span><br><span class="line">        # if TCP stream choice, then you can easily dump the traffic on the remote or local host: nc -l `TCP port num` &gt; received.txt</span><br><span class="line">        OUTPUT            = &quot;CONSOLE&quot;;</span><br><span class="line">~</span><br><span class="line">        # P-GW binded interface for SGI (egress/ingress internet traffic)</span><br><span class="line">        PGW_INTERFACE_NAME_FOR_SGI            = &quot;eth0&quot;;                         # YOUR NETWORK CONFIG HERE</span><br><span class="line">        PGW_IPV4_ADDRESS_FOR_SGI              = &quot;192.168.239.128/24&quot;;             # YOUR NETWORK CONFIG HERE</span><br><span class="line">        PGW_MASQUERADE_SGI                    = &quot;yes&quot;; </span><br><span class="line">~</span><br><span class="line">        # DNS address communicated to UEs</span><br><span class="line">        DEFAULT_DNS_IPV4_ADDRESS     = &quot;140.118.31.99&quot;;                            # YOUR NETWORK CONFIG HERE</span><br><span class="line">        DEFAULT_DNS_SEC_IPV4_ADDRESS = &quot;8.8.8.8&quot;;                            # YOUR NETWORK CONFIG HERE</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<h3 id="Run-OAI"><a href="#Run-OAI" class="headerlink" title="Run OAI !"></a>Run OAI !</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">oai@oai:~/openair-cn/BUILD/EPC$ cd ~/openair-cn/SCRIPTS/</span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./build_epc -i</span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./build_epc -c -l</span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./build_hss -c -l</span><br><span class="line"></span><br><span class="line">Open 2 terminals</span><br><span class="line"></span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./run_epc -i -r</span><br><span class="line"></span><br><span class="line">036    ================== Statistics ==================</span><br><span class="line">000294 00040:845928 7F23ACAF9700 DEBUG MME-AP SRC/MME_APP/mme_app_statistics.c:0037            </span><br><span class="line">|   Global   | Since last display |</span><br><span class="line">000295 00040:845929 7F23ACAF9700 DEBUG MME-AP SRC/MME_APP/mme_app_statistics.c:0038    UE      </span><br><span class="line">|          0 |              0     |</span><br><span class="line">000296 00040:845930 7F23ACAF9700 DEBUG MME-AP SRC/MME_APP/mme_app_statistics.c:0039    Bearers </span><br><span class="line">|          0 |              0     |</span><br><span class="line"></span><br><span class="line">oai@oai:~/openair-cn/SCRIPTS$ sudo ./run_hss</span><br><span class="line"></span><br><span class="line">Open 1 terminal</span><br><span class="line"></span><br><span class="line">oai@oai:~$ cd openairinterface5g/cmake_targets/lte_build_oai/build/</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets/lte_build_oai/build$ sudo ifconfig eth0:3 192.170.0.2 up</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets/lte_build_oai/build$ sudo ifconfig eth0:4 192.170.1.2 up</span><br><span class="line">oai@oai:~/openairinterface5g/cmake_targets/lte_build_oai/build$ sudo ./lte-softmodem -E -O ~/enb.band7.tm1.50PRB.usrpb210.conf -d</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OAI/" rel="tag"># OAI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/31/Debug on M-CORD provision failed issue/" rel="next" title="Debug on M-CORD provision failed issue">
+                <i class="fa fa-chevron-left"></i> Debug on M-CORD provision failed issue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-up-OAI-eNB-and-EPC-in-a-single-Virtual-Machine"><span class="nav-number">1.</span> <span class="nav-text">Set up OAI eNB and EPC in a single Virtual Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Virtual-Machine"><span class="nav-number">1.1.</span> <span class="nav-text">Install Virtual Machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OAI-environment-set-up-and-installation"><span class="nav-number">1.2.</span> <span class="nav-text">OAI environment set up and installation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Environment-low-latency-kernel-setup"><span class="nav-number">1.2.1.</span> <span class="nav-text">Environment / low-latency kernel setup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Openair-CN-EPC-installation"><span class="nav-number">1.2.2.</span> <span class="nav-text">Openair-CN (EPC) installation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Openairinterface-eNB-installation"><span class="nav-number">1.2.3.</span> <span class="nav-text">Openairinterface eNB installation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuration-Setting-for-connect-eNB-to-EPC"><span class="nav-number">1.2.4.</span> <span class="nav-text">Configuration Setting for connect eNB to EPC</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-OAI"><span class="nav-number">1.3.</span> <span class="nav-text">Run OAI !</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

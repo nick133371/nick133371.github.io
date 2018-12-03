@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CORD, M-CORD," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Find error here Task [maas-provision : Wait for node to be fully provisioned]   SHELL CMD: /usr/local/bin/get-node-prov-stat =&amp;gt; status “1” if complete provisioning, the output will be 2 Dig into th">
+<meta name="keywords" content="CORD, M-CORD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debug on M-CORD provision failed issue">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/Debug on M-CORD provision failed issue/index.html">
+<meta property="og:site_name" content="Nick&#39;s Blog">
+<meta property="og:description" content="Find error here Task [maas-provision : Wait for node to be fully provisioned]   SHELL CMD: /usr/local/bin/get-node-prov-stat =&amp;gt; status “1” if complete provisioning, the output will be 2 Dig into th">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/pCH5Jtg.png">
+<meta property="og:image" content="https://i.imgur.com/ZFVaG8t.png">
+<meta property="og:image" content="https://i.imgur.com/vyDAKWC.png">
+<meta property="og:image" content="https://i.imgur.com/2ACXmVS.png">
+<meta property="og:image" content="https://i.imgur.com/9QRoK6k.png">
+<meta property="og:updated_time" content="2018-12-03T07:38:47.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Debug on M-CORD provision failed issue">
+<meta name="twitter:description" content="Find error here Task [maas-provision : Wait for node to be fully provisioned]   SHELL CMD: /usr/local/bin/get-node-prov-stat =&amp;gt; status “1” if complete provisioning, the output will be 2 Dig into th">
+<meta name="twitter:image" content="https://i.imgur.com/pCH5Jtg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/31/Debug on M-CORD provision failed issue/"/>
+
+
+
+
+
+  <title>Debug on M-CORD provision failed issue | Nick's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nick's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">LTE/NB-IoT/NR/SDN/OAI/CORD</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/Debug on M-CORD provision failed issue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick Ho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nick's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Debug on M-CORD provision failed issue</h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T20:25:16+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Find-error-here"><a href="#Find-error-here" class="headerlink" title="Find error here"></a>Find error here</h2><ul>
+<li>Task [maas-provision : Wait for node to be fully provisioned]</li>
+</ul>
+<p><img src="https://i.imgur.com/pCH5Jtg.png" alt=""></p>
+<p>SHELL CMD: /usr/local/bin/get-node-prov-stat =&gt; status “1”</p>
+<p>if complete provisioning, the output will be 2</p>
+<h2 id="Dig-into-the-detail"><a href="#Dig-into-the-detail" class="headerlink" title="Dig into the detail"></a>Dig into the detail</h2><p>In log /etc/maas/ansible/logs/node-<id>.log</id></p>
+<p>Find out the problem - juju-compute-setup</p>
+<p><img src="https://i.imgur.com/ZFVaG8t.png" alt=""></p>
+<p>Dig into detail by using</p>
+<figure class="highlight plain"><figcaption><span>status --format</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">![](https://i.imgur.com/UHJOVXS.png)</span><br><span class="line"></span><br><span class="line">shows nova-compute failed and hook failed &quot;install&quot;</span><br><span class="line"></span><br><span class="line">Get into compute node to see the detail and test by </span><br><span class="line"></span><br><span class="line">`sudo apt-get install traceroute`</span><br><span class="line"></span><br><span class="line">![](https://i.imgur.com/Q5XEBdb.png)</span><br><span class="line"></span><br><span class="line">Seems like python package engine has some failure.</span><br><span class="line"></span><br><span class="line">APT service depends on dpkg, and dpkg had error at nova-compute (libvirt) user setting.</span><br><span class="line"></span><br><span class="line">Go into /var/log/nova/nova-compute.log</span><br><span class="line"></span><br><span class="line">We had a problem when we have the operation &apos;_build_resource&apos; at nova/compute/manager.py#243, and the stack show the tool it use:</span><br><span class="line">- nova</span><br><span class="line">- glance-client</span><br><span class="line">- requests</span><br><span class="line">- urllib3</span><br><span class="line"></span><br><span class="line">## bug fixed </span><br><span class="line"></span><br><span class="line">- /usr/lib/python2.7/dist-packages/nova/</span><br><span class="line">- /usr/lib/python2.7/dist-packages/oslo_concurrency/</span><br><span class="line">- /usr/lib/python2.7/dist-packages/glanceclient/</span><br><span class="line">- /usr/lib/python2.7/dist-packages/requests/</span><br><span class="line">- /usr/local/lib/python2.7/dist-packages/urllib3/</span><br><span class="line"></span><br><span class="line">In python, it will search the package library by the following way:</span><br><span class="line">- the path of the program</span><br><span class="line">- System path</span><br><span class="line">- export PYTHONPATH</span><br><span class="line"></span><br><span class="line">for urllib3, we have two conflict package version at a single compute node !</span><br><span class="line"></span><br><span class="line">```python=</span><br><span class="line">ubuntu@nasty-ground:~$ python</span><br><span class="line">Python 2.7.6 (default, Jun 22 2015, 17:58:13)</span><br><span class="line">[GCC 4.8.2] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import urllib3</span><br><span class="line">&gt;&gt;&gt; urllib3</span><br><span class="line">&lt;module &apos;urllib3&apos; from &apos;/usr/local/lib/python2.7/dist-packages/urllib3/__init__.pyc&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; urllib3.__version__</span><br><span class="line">&apos;1.24&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@nasty-ground:~$ python</span><br><span class="line">Python <span class="number">2.7</span><span class="number">.6</span> (default, Jun <span class="number">22</span> <span class="number">2015</span>, <span class="number">17</span>:<span class="number">58</span>:<span class="number">13</span>)</span><br><span class="line">[GCC <span class="number">4.8</span><span class="number">.2</span>] on linux2</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path</span><br><span class="line">[<span class="string">''</span>, <span class="string">'/usr/lib/python2.7'</span>, <span class="string">'/usr/lib/python2.7/plat-x86_64-linux-gnu'</span>, <span class="string">'/usr/lib/python2.7/lib-tk'</span>, <span class="string">'/usr/lib/python2.7/lib-old'</span>, <span class="string">'/usr/lib/python2.7/lib-dynload'</span>, <span class="string">'/usr/local/lib/python2.7/dist-packages'</span>, <span class="string">'/usr/lib/python2.7/dist-packages'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.remove(<span class="string">'/usr/local/lib/python2.7/dist-packages'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path</span><br><span class="line">[<span class="string">''</span>, <span class="string">'/usr/lib/python2.7'</span>, <span class="string">'/usr/lib/python2.7/plat-x86_64-linux-gnu'</span>, <span class="string">'/usr/lib/python2.7/lib-tk'</span>, <span class="string">'/usr/lib/python2.7/lib-old'</span>, <span class="string">'/usr/lib/python2.7/lib-dynload'</span>, <span class="string">'/usr/lib/python2.7/dist-packages'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib3</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>urllib3</span><br><span class="line">&lt;module <span class="string">'urllib3'</span> <span class="keyword">from</span> <span class="string">'/usr/lib/python2.7/dist-packages/urllib3/__init__.pyc'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>urllib3.__version__</span><br><span class="line"><span class="string">'1.7.1'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>sys.path has the priority, so the urllib3 at /usr/local/lib/python/dist-packages will be included first.</p>
+<p>In urllib3 1.7.1 didn’t have the dictionary <code>Key_fn_by_scheme</code>, the different implementation cause the issue.</p>
+<p>solution is to remove the 1.24 version</p>
+<h2 id="sudo-pip-uninstall-urllib3"><a href="#sudo-pip-uninstall-urllib3" class="headerlink" title="sudo pip uninstall urllib3"></a><code>sudo pip uninstall urllib3</code></h2><p>Check version again</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib3</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>urllib3</span><br><span class="line">&lt;module <span class="string">'urllib3'</span> <span class="keyword">from</span> <span class="string">'/usr/lib/python2.7/dist-packages/urllib3/__init__.pyc'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>urllib3.__version__</span><br><span class="line"><span class="string">'1.7.1'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>restart nova-compute service</p>
+<p><code>sudo service nova-compute restart # this step can skip</code> </p>
+<p>Get back into head, type <figure class="highlight plain"><figcaption><span>status --format</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://i.imgur.com/hemhFzj.png)</span><br><span class="line"></span><br><span class="line">Manually fixed the issue</span><br><span class="line"></span><br><span class="line">`juju resolved --retry nova-compute/0`</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Wait for around 10 minute to get this result </span><br><span class="line"></span><br><span class="line">![](https://i.imgur.com/TVta7KV.png)</span><br><span class="line"></span><br><span class="line">Check by using the same command ```juju status --format=tabular</span><br></pre></td></tr></table></figure></p>
+<p>Since our compute node has already provisioned, modify the playbook here.</p>
+<ul>
+<li>~/cord/build/ansible/roles/maas-provision/tasks/main.yml</li>
+</ul>
+<p>status 6 means provisioned</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- name: Wait for node to become ready                                                                                                                                                  │······</span><br><span class="line">  shell: maas cord nodes list|jq -r &apos;.[] | select(.status == 0 or .status == 6).system_id&apos;                                                                                             │······</span><br><span class="line">  register: nodeid                                                                                                                                                                     │······</span><br><span class="line">  until: nodeid.stdout                                                                                                                                                                 │······</span><br><span class="line">  retries: 40                                                                                                                                                                          │······</span><br><span class="line">  delay: 15                                                                                                                                                                            │······</span><br><span class="line">  tags:                                                                                                                                                                                │······</span><br><span class="line">    - skip_ansible_lint</span><br></pre></td></tr></table></figure>
+<p>rebuild by the following command</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> tear down and clean profile</span><br><span class="line">make xos-teardown; make clean-openstack; make clean-onos; </span><br><span class="line">rm milestones/cord-config; rm milestones/copy-co*;</span><br><span class="line">make clean-profile;</span><br><span class="line">cd genconfig/ &amp;&amp; rm -rf config.* cord_* inventory.ini;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> you can update config or tosca now</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> rebuild</span><br><span class="line">cd ../ &amp;&amp; make config PODCONFIG=mcord-oai-virtual.yml;</span><br><span class="line">make -j4 build; make compute-node-refresh; make mcord-oai-test;</span><br></pre></td></tr></table></figure>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><ul>
+<li><p>original task observation<br><img src="https://i.imgur.com/vyDAKWC.png" alt=""></p>
+</li>
+<li><p>nova output<br>  <img src="https://i.imgur.com/2ACXmVS.png" alt=""></p>
+</li>
+<li>XOS output<br><img src="https://i.imgur.com/9QRoK6k.png" alt=""></li>
+</ul>
+<h2 id="Root-case"><a href="#Root-case" class="headerlink" title="Root case"></a>Root case</h2><p>This is an issue with how Python packages are installed and upstream in urllib3/requests.</p>
+<p><a href="https://github.com/urllib3/urllib3/issues/1456" target="_blank" rel="noopener">https://github.com/urllib3/urllib3/issues/1456</a></p>
+<p>lots of developer facing the same problem from the new release urllib3</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CORD-M-CORD/" rel="tag"># CORD, M-CORD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/30/NTUST OAI-CORD scenario for CiaB 4.1 & 5.0/" rel="next" title="NTUST OAI-CORD scenario for CiaB 4.1 & 5.0">
+                <i class="fa fa-chevron-left"></i> NTUST OAI-CORD scenario for CiaB 4.1 & 5.0
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/26/0428 OAI Training Course/" rel="prev" title="OAI all-in-one deployment">
+                OAI all-in-one deployment <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Nick Ho</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Find-error-here"><span class="nav-number">1.</span> <span class="nav-text">Find error here</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dig-into-the-detail"><span class="nav-number">2.</span> <span class="nav-text">Dig into the detail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-pip-uninstall-urllib3"><span class="nav-number">3.</span> <span class="nav-text">sudo pip uninstall urllib3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result"><span class="nav-number">4.</span> <span class="nav-text">Result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-case"><span class="nav-number">5.</span> <span class="nav-text">Root case</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
